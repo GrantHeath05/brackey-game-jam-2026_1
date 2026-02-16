@@ -18,7 +18,11 @@ config/icon="res://Sprites/icon.svg"
 [file_customization]
 
 folder_colors={
-"res://cutscenes/": "purple"
+"res://Cutscenes/": "purple",
+"res://Scenes/": "blue",
+"res://Scripts/": "green",
+"res://Sprites/": "red",
+"res://Textures/": "pink"
 }
 
 [input]

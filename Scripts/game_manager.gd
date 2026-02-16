@@ -15,7 +15,7 @@ func _ready() -> void:
 	fade_from_black()
 	await fade_from_black()
 
-	# play_video("godot_ogg_test")
+	play_video("godot_ogg_test")
 
 # input file name as a parameter. function just runs sceneplayer.play_cutscene, handles errors here thogh
 func play_video(filename: String)->void:
