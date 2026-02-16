@@ -4,18 +4,28 @@ extends Node2D
 
 @export var fade_rect_controller_path: NodePath
 @export var video_player_path: NodePath
+@export var objective_box_path: NodePath
+
+var objective_box
 var fade_rect_controller
 var scene_player
 var in_cutscene: bool = false
 
 func _ready() -> void:
-	save_fade_rect_controller_node()
-	save_scene_player()
+	save_all_nodes()
+
 	hide_video()
 	fade_from_black()
 	await fade_from_black()
 
-	play_video("godot_ogg_test")
+	# await play_video("godot_ogg_test")
+
+	append_objective("test test test test test test test test test test test test test test ")
+
+func save_all_nodes()->void:
+	save_fade_rect_controller_node()
+	save_scene_player()
+	save_objective_box()
 
 # input file name as a parameter. function just runs sceneplayer.play_cutscene, handles errors here thogh
 func play_video(filename: String)->void:
@@ -58,6 +68,9 @@ func save_fade_rect_controller_node ()-> void:
 func save_scene_player ()-> void:
 	scene_player = get_node_or_null(video_player_path)
 
+func save_objective_box ()-> void:
+	objective_box = get_node_or_null(objective_box_path)
+
 func hide_video ()->void:
 	scene_player.stop()
 	scene_player.visible = false
@@ -71,3 +84,10 @@ func set_cutscene_flag(flag: bool)->void:
 	
 func get_cutscene_flag()->bool:
 	return in_cutscene
+
+func append_objective(text: String)->void:
+	if objective_box:
+		objective_box.append_text(text)
+		objective_box.show_box()
+	else:
+		print_debug("WARN: Objective Box was not found")

@@ -129,20 +129,27 @@ height = 16.0
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_kry3j")
-fade_rect_controller_path = NodePath("UI/UI_Root")
-video_player_path = NodePath("UI/UI_Root/VideoContainer/video_player")
+fade_rect_controller_path = NodePath("UI/Fade_&_Video_Player")
+video_player_path = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
+objective_box_path = NodePath("UI/Objective_Box/Objective_Container")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(114, -11)
-color = Color(0.23753911, 0.23753914, 0.23753911, 0.76862746)
+color = Color(0.32544088, 0.3254409, 0.32544076, 0.76862746)
 
 [node name="UI" parent="." instance=ExtResource("2_jjvhh")]
 
-[node name="UI_Root" parent="UI" index="0"]
-visible = false
+[node name="Fade_&_Video_Player" parent="UI" index="0"]
+z_index = 5
 
-[node name="video_player" parent="UI/UI_Root/VideoContainer" index="0"]
-texture_filter = 2
+[node name="Objective_Box" parent="UI" index="1"]
+z_index = 4
+layout_direction = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -172,4 +179,5 @@ script = ExtResource("7_344ge")
 flicker_interval = 0.15
 
 [editable path="UI"]
+[editable path="UI/Objective_Box"]
 [editable path="Player"]

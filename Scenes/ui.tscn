@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://brvmxklahrka5"]
+[gd_scene load_steps=8 format=3 uid="uid://brvmxklahrka5"]
 
 [ext_resource type="Script" uid="uid://f0if1qvo7aqy" path="res://Scripts/fade_controls.gd" id="1_qdvrb"]
 [ext_resource type="Script" uid="uid://ut870ecfnuyb" path="res://Scripts/cutscene-renderer.gd" id="2_nf4gj"]
+[ext_resource type="PackedScene" uid="uid://odm2axqfyw6h" path="res://Scenes/objective_box.tscn" id="3_nf4gj"]
 
 [sub_resource type="Animation" id="Animation_6bp64"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/UI_Root/FadeRect:color")
+tracks/0/path = NodePath("UI/Fade_&_Video_Player/FadeRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,7 +24,7 @@ resource_name = "fade_in"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/UI_Root/FadeRect:color")
+tracks/0/path = NodePath("UI/Fade_&_Video_Player/FadeRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,7 +39,7 @@ resource_name = "fade_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI/UI_Root/FadeRect:color")
+tracks/0/path = NodePath("UI/Fade_&_Video_Player/FadeRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +59,7 @@ _data = {
 [node name="UI" type="CanvasLayer"]
 layer = 5
 
-[node name="UI_Root" type="Control" parent="."]
+[node name="Fade_&_Video_Player" type="Control" parent="."]
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 15
@@ -68,13 +69,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qdvrb")
 
-[node name="Fade_to_Black" type="AnimationPlayer" parent="UI_Root"]
+[node name="Fade_to_Black" type="AnimationPlayer" parent="Fade_&_Video_Player"]
 root_node = NodePath("../../..")
 libraries = {
 &"": SubResource("AnimationLibrary_ynf5e")
 }
 
-[node name="FadeRect" type="ColorRect" parent="UI_Root"]
+[node name="FadeRect" type="ColorRect" parent="Fade_&_Video_Player"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,7 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="VideoContainer" type="Control" parent="UI_Root"]
+[node name="VideoContainer" type="Control" parent="Fade_&_Video_Player"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +92,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="video_player" type="VideoStreamPlayer" parent="UI_Root/VideoContainer"]
+[node name="video_player" type="VideoStreamPlayer" parent="Fade_&_Video_Player/VideoContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,3 +101,5 @@ grow_horizontal = 2
 grow_vertical = 2
 expand = true
 script = ExtResource("2_nf4gj")
+
+[node name="Objective_Box" parent="." instance=ExtResource("3_nf4gj")]

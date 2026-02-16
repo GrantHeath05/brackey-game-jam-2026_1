@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://odm2axqfyw6h"]
+
+[ext_resource type="Texture2D" uid="uid://cnxyomge5wvhu" path="res://Sprites/objective_txt_box.png" id="1_88q0c"]
+[ext_resource type="Script" uid="uid://bdb6wt7cxdxk0" path="res://Scripts/objective_box.gd" id="1_kpw11"]
+[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="2_aiqgg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_88q0c"]
+texture = ExtResource("1_88q0c")
+
+[sub_resource type="Animation" id="Animation_88q0c"]
+resource_name = "Hide_Objective_Panel"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objective_Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aiqgg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objective_Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3fg51"]
+resource_name = "Objective_Panel_Fader"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objective_Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kpw11"]
+resource_name = "quick_hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Objective_Container:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vrq2x"]
+_data = {
+&"Hide_Objective_Panel": SubResource("Animation_88q0c"),
+&"RESET": SubResource("Animation_aiqgg"),
+&"Show_Objective_Panel": SubResource("Animation_3fg51"),
+&"quick_hide": SubResource("Animation_kpw11")
+}
+
+[node name="Objective_Box" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Objective_Container" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 60)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -104.5
+offset_right = 104.5
+offset_bottom = 93.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_88q0c")
+script = ExtResource("1_kpw11")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Objective_Container"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_vrq2x")
+}
+
+[node name="Label" type="Label" parent="Objective_Container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_aiqgg")
+theme_override_font_sizes/font_size = 56
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_trim_flags = 0
+justification_flags = 160
+text_direction = 1
+language = "English"
