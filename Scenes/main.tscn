@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtp8uinalalc8"]
+
+[ext_resource type="Texture2D" uid="uid://df0327g51pxjk" path="res://Sprites/icon.svg" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://dw50mvdejf5ho" path="res://Scripts/game_manager.gd" id="1_kry3j"]
+[ext_resource type="PackedScene" uid="uid://b1ass8dr4qiol" path="res://Scenes/player.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="2_jjvhh"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_kry3j")
+fade_rect_controller_path = NodePath("UI/UI_Root")
+video_player_path = NodePath("UI/UI_Root/VideoContainer/video_player")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(114, -11)
+color = Color(0.23753911, 0.23753914, 0.23753911, 0.76862746)
+
+[node name="Icon3" type="Sprite2D" parent="CanvasModulate"]
+position = Vector2(-215, -48)
+texture = ExtResource("1_bo1nx")
+
+[node name="Icon2" type="Sprite2D" parent="CanvasModulate"]
+position = Vector2(-131, 113)
+texture = ExtResource("1_bo1nx")
+
+[node name="Icon" type="Sprite2D" parent="CanvasModulate"]
+texture = ExtResource("1_bo1nx")
+
+[node name="UI" parent="." instance=ExtResource("2_jjvhh")]
+
+[node name="Player" parent="." instance=ExtResource("2_8gbba")]
+
+[editable path="UI"]
+[editable path="Player"]

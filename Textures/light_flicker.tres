@@ -1,0 +1,43 @@
+[gd_resource type="AnimatedTexture" load_steps=11 format=3 uid="uid://di31a33lunfcq"]
+
+[ext_resource type="Texture2D" uid="uid://cv2lqflp2wgws" path="res://Sprites/light_sprites/light-1.png" id="1_v564a"]
+[ext_resource type="Texture2D" uid="uid://d2bajmo4jpyyi" path="res://Sprites/light_sprites/light-2.png" id="2_5uoca"]
+[ext_resource type="Texture2D" uid="uid://c68bkwmby2k2w" path="res://Sprites/light_sprites/light-3.png" id="3_lmsqt"]
+[ext_resource type="Texture2D" uid="uid://bmh43iycamfp4" path="res://Sprites/light_sprites/light-4.png" id="4_bbyi3"]
+[ext_resource type="Texture2D" uid="uid://bqmdf3mhpbbh8" path="res://Sprites/light_sprites/light-5.png" id="5_saea2"]
+[ext_resource type="Texture2D" uid="uid://mes71pxn4m8b" path="res://Sprites/light_sprites/light-6.png" id="6_ibgbh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uhysd"]
+load_path = "res://.godot/imported/light-7.png-e5aff81c8e049ca4a21a1531de67e58b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_skbgc"]
+load_path = "res://.godot/imported/light-8.png-39ab8b59b80ec4076182a15b98634ec1.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3a5r8"]
+load_path = "res://.godot/imported/light-9.png-242fd9634b72092f806cabb68fc61edb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jr6ed"]
+load_path = "res://.godot/imported/light-10.png-568c4fc1961bf4056fe3c50caf9f7ed6.ctex"
+
+[resource]
+frames = 10
+frame_0/texture = ExtResource("1_v564a")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("2_5uoca")
+frame_1/duration = 0.3
+frame_2/texture = ExtResource("3_lmsqt")
+frame_2/duration = 0.3
+frame_3/texture = ExtResource("4_bbyi3")
+frame_3/duration = 0.3
+frame_4/texture = ExtResource("5_saea2")
+frame_4/duration = 0.3
+frame_5/texture = ExtResource("6_ibgbh")
+frame_5/duration = 0.3
+frame_6/texture = SubResource("CompressedTexture2D_uhysd")
+frame_6/duration = 0.3
+frame_7/texture = SubResource("CompressedTexture2D_skbgc")
+frame_7/duration = 0.3
+frame_8/texture = SubResource("CompressedTexture2D_3a5r8")
+frame_8/duration = 0.3
+frame_9/texture = SubResource("CompressedTexture2D_jr6ed")
+frame_9/duration = 0.3
