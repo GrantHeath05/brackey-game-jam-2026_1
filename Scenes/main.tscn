@@ -141,7 +141,7 @@ position = Vector2(-58, 144)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(114, -11)
-color = Color(0.32544088, 0.3254409, 0.32544076, 0.76862746)
+color = Color(0.3254902, 0.3254902, 0.3254902, 1)
 
 [node name="UI" parent="." instance=ExtResource("2_jjvhh")]
 
