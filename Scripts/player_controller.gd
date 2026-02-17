@@ -1,11 +1,20 @@
 extends CharacterBody2D
 
 @export var speed: float = 200.0
-var players_input:= Vector2.ZERO
+
+var players_input := Vector2.ZERO
+var last_direction := "down"   # Used for idle animations
+
+
 func _physics_process(_delta: float) -> void:
 	movement_logic()
 	player_animation()
+	handle_footsteps()
 
+
+# -------------------------
+# MOVEMENT
+# -------------------------
 func movement_logic() -> void:
 	players_input = Vector2.ZERO
 
@@ -17,7 +26,7 @@ func movement_logic() -> void:
 
 	if Input.is_action_pressed("Down"):
 		players_input.y += 1
-
+		
 	if Input.is_action_pressed("Up"):
 		players_input.y -= 1
 
@@ -26,27 +35,55 @@ func movement_logic() -> void:
 		velocity = players_input * speed
 	else:
 		velocity = Vector2.ZERO
+
 	move_and_slide()
 
-func player_animation() -> void:
-	var anim := ""
 
-	if players_input == Vector2.ZERO:
-		# anim = "idle"
-		anim="down"
+# -------------------------
+# FOOTSTEP SOUND
+# -------------------------
+func handle_footsteps() -> void:
+	var moving := players_input != Vector2.ZERO
+
+	if moving and not $footstep_sound.playing:
+		$footstep_sound.play()
+
+	if not moving and $footstep_sound.playing:
+		$footstep_sound.stop()
+
+
+# -------------------------
+# ANIMATION
+# -------------------------
+func player_animation() -> void:
+	var is_moving := players_input != Vector2.ZERO
+	var direction := get_facing_direction()
+
+	if is_moving:
+		$Walking_animation.play("walk_" + direction)
 	else:
-		# Determine dominant axis
+		$Walking_animation.play("idle_" + direction)
+
+
+# -------------------------
+# DIRECTION HELPER
+# -------------------------
+func get_facing_direction() -> String:
+	# Update last_direction only when moving
+	if players_input != Vector2.ZERO:
+
+		# Horizontal dominates
 		if abs(players_input.x) > abs(players_input.y):
-			# Horizontal movement
 			if players_input.x > 0:
-				anim = "right"
+				last_direction = "right"
 			else:
-				anim = "left"
+				last_direction = "left"
+
+		# Vertical dominates
 		else:
-			# Vertical movement
 			if players_input.y > 0:
-				anim = "down"
+				last_direction = "down"
 			else:
-				anim = "up"
-	# print_debug(anim)
-	$Walking_animation.play(anim)
+				last_direction = "up"
+
+	return last_direction

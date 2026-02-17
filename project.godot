@@ -19,15 +19,18 @@ config/icon="res://Sprites/icon.svg"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 
 [file_customization]
 
 folder_colors={
+"res://Audio/": "gray",
 "res://Cutscenes/": "purple",
 "res://Scenes/": "blue",
 "res://Scripts/": "green",
 "res://Sprites/": "red",
-"res://Textures/": "pink"
+"res://Textures/": "pink",
+"res://fonts/": "orange"
 }
 
 [input]

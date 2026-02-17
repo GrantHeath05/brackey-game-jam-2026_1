@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://brvmxklahrka5"]
+[gd_scene load_steps=7 format=3 uid="uid://brvmxklahrka5"]
 
 [ext_resource type="Script" uid="uid://f0if1qvo7aqy" path="res://Scripts/fade_controls.gd" id="1_qdvrb"]
 [ext_resource type="Script" uid="uid://ut870ecfnuyb" path="res://Scripts/cutscene-renderer.gd" id="2_nf4gj"]
-[ext_resource type="PackedScene" uid="uid://odm2axqfyw6h" path="res://Scenes/objective_box.tscn" id="3_nf4gj"]
 
 [sub_resource type="Animation" id="Animation_6bp64"]
 length = 0.001
@@ -101,5 +100,3 @@ grow_horizontal = 2
 grow_vertical = 2
 expand = true
 script = ExtResource("2_nf4gj")
-
-[node name="Objective_Box" parent="." instance=ExtResource("3_nf4gj")]
