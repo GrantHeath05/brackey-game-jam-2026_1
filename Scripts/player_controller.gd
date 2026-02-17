@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
-@export var speed: float = 200.0
+@export var speed: float = 125.0
 
 var players_input := Vector2.ZERO
 var last_direction := "down"   # Used for idle animations
 
 
 func _physics_process(_delta: float) -> void:
+
 	movement_logic()
 	player_animation()
 	handle_footsteps()

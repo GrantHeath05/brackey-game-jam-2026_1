@@ -1,12 +1,16 @@
-[gd_scene load_steps=12 format=4 uid="uid://dtp8uinalalc8"]
+[gd_scene load_steps=16 format=4 uid="uid://dtp8uinalalc8"]
 
 [ext_resource type="Script" uid="uid://dw50mvdejf5ho" path="res://Scripts/game_manager.gd" id="1_kry3j"]
 [ext_resource type="PackedScene" uid="uid://b1ass8dr4qiol" path="res://Scenes/player.tscn" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://istyookg2bxj" path="res://Scenes/pause_menu.tscn" id="3_344ge"]
 [ext_resource type="Texture2D" uid="uid://cyc4xfbul27lx" path="res://Sprites/tilesets/BGJ_stairs_tilemap.png" id="5_21xkr"]
+[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://brmmp08wy3kii" path="res://Sprites/tilesets/BGJ_tilemap_1.png" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://bxwfjvgvx6mly" path="res://Scenes/input_settings.tscn" id="6_6iyac"]
 [ext_resource type="Texture2D" uid="uid://d1chpgjmc2h02" path="res://Sprites/64x64 textures (7).png" id="7_6bp64"]
-[ext_resource type="Script" uid="uid://q68f46wafftw" path="res://Scenes/light_scale_changer.gd" id="7_344ge"]
+[ext_resource type="Script" uid="uid://q68f46wafftw" path="res://Scripts/light_scale_changer.gd" id="7_344ge"]
+[ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="9_ynf5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kry3j"]
 texture = ExtResource("5_kry3j")
@@ -131,7 +135,9 @@ height = 16.0
 script = ExtResource("1_kry3j")
 fade_rect_controller_path = NodePath("UI/Fade_&_Video_Player")
 video_player_path = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
-objective_box_path = NodePath("UI/Objective_Box/Objective_Container")
+
+[node name="Indicator" parent="." instance=ExtResource("9_ynf5e")]
+position = Vector2(-58, 144)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(114, -11)
@@ -140,16 +146,34 @@ color = Color(0.32544088, 0.3254409, 0.32544076, 0.76862746)
 [node name="UI" parent="." instance=ExtResource("2_jjvhh")]
 
 [node name="Fade_&_Video_Player" parent="UI" index="0"]
+visible = false
 z_index = 5
 
-[node name="Objective_Box" parent="UI" index="1"]
-z_index = 4
-layout_direction = 1
-anchors_preset = 5
+[node name="InputSettings" parent="UI" instance=ExtResource("6_6iyac")]
+visible = false
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("3_344ge")]
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.0
-grow_vertical = 1
+anchor_bottom = 0.5
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+player_path = NodePath("../../Player")
+
+[node name="PauseMenu" parent="UI/PauseMenu" index="1"]
+visible = true
+
+[node name="Controls_settings" type="Button" parent="UI/PauseMenu/PauseMenu/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_d1ilt")
+text = "Controls"
+
+[node name="Volume" parent="UI/PauseMenu" index="2"]
+visible = false
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -178,6 +202,9 @@ texture_scale = 2.0
 script = ExtResource("7_344ge")
 flicker_interval = 0.15
 
+[connection signal="pressed" from="UI/PauseMenu/PauseMenu/VBoxContainer/Controls_settings" to="UI/PauseMenu" method="_on_controls_settings_pressed"]
+
 [editable path="UI"]
-[editable path="UI/Objective_Box"]
+[editable path="UI/PauseMenu"]
+[editable path="UI/PauseMenu/InputSettings"]
 [editable path="Player"]

@@ -1,0 +1,221 @@
+[gd_scene load_steps=13 format=3 uid="uid://istyookg2bxj"]
+
+[ext_resource type="Script" uid="uid://b17op6ucv3scm" path="res://Scripts/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="Shader" uid="uid://c6qpppy4fi8v7" path="res://Shaders/pause_menu_blur.gdshader" id="2_1och7"]
+[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="3_bpi0q"]
+[ext_resource type="FontFile" uid="uid://bvd2jri4pciwv" path="res://fonts/PlaywriteNZBasic-Light.ttf" id="4_myy0f"]
+[ext_resource type="Script" uid="uid://crg37ipiemcgk" path="res://Scripts/volume_slider.gd" id="4_vmyb1"]
+[ext_resource type="PackedScene" uid="uid://bxwfjvgvx6mly" path="res://Scenes/input_settings.tscn" id="6_myy0f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1x06"]
+shader = ExtResource("2_1och7")
+shader_parameter/lod = 0.0
+
+[sub_resource type="GDScript" id="GDScript_1och7"]
+script/source = "extends PanelContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_q1x06"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5qg43"]
+resource_name = "Show_Pause_Menu"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseMenu:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_k6kdp"]
+resource_name = "blur"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qg43"]
+_data = {
+&"RESET": SubResource("Animation_q1x06"),
+&"Show_Menu": SubResource("Animation_5qg43"),
+&"blur": SubResource("Animation_k6kdp")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2, 2)
+script = ExtResource("1_k0w1u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_q1x06")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -50.5
+offset_right = 36.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bpi0q")
+text = "Resume"
+
+[node name="Volume_Settings" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bpi0q")
+text = "Volume
+"
+
+[node name="UnStuck" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bpi0q")
+text = "Unstuck"
+
+[node name="Quit to Desktop" type="Button" parent="PauseMenu/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bpi0q")
+text = "Quit to Desktop"
+
+[node name="Volume" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -86.0
+offset_right = 60.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_1och7")
+
+[node name="Volume_Settings" type="VBoxContainer" parent="Volume"]
+layout_mode = 2
+
+[node name="Leave_Settings" type="Button" parent="Volume/Volume_Settings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bpi0q")
+text = "Close
+"
+
+[node name="Label" type="Label" parent="Volume/Volume_Settings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_myy0f")
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Volume/Volume_Settings"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+max_value = 1.0
+step = 0.01
+script = ExtResource("4_vmyb1")
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="Volume/Volume_Settings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_myy0f")
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="Volume/Volume_Settings"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+max_value = 1.0
+step = 0.01
+script = ExtResource("4_vmyb1")
+bus_name = "sfx"
+
+[node name="Label3" type="Label" parent="Volume/Volume_Settings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_myy0f")
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="Volume/Volume_Settings"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+max_value = 1.0
+step = 0.01
+script = ExtResource("4_vmyb1")
+bus_name = "music"
+
+[node name="InputSettings" parent="." instance=ExtResource("6_myy0f")]
+layout_mode = 1
+
+[node name="Close_Control_Remapper" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+theme_override_fonts/font = ExtResource("3_bpi0q")
+text = "Close
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5qg43")
+}
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Volume_Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/UnStuck" to="." method="_on_un_stuck_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Quit to Desktop" to="." method="_on_quit_to_desktop_pressed"]
+[connection signal="pressed" from="Volume/Volume_Settings/Leave_Settings" to="." method="_on_leave_settings_pressed"]
+[connection signal="pressed" from="InputSettings/PanelContainer/MarginContainer/VBoxContainer/Close_Control_Remapper" to="." method="_on_close_control_remapper_pressed"]
+
+[editable path="InputSettings"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://xowece2cdlyu"]
+
+[ext_resource type="Texture2D" uid="uid://dmitpn5et5he8" path="res://Sprites/indicator_circle.png" id="1_s5agk"]
+[ext_resource type="Texture2D" uid="uid://d1chpgjmc2h02" path="res://Sprites/64x64 textures (7).png" id="2_s5agk"]
+[ext_resource type="Script" uid="uid://jk87vknmwau0" path="res://Scripts/player_light_script.gd" id="3_5ko66"]
+
+[node name="Indicator" type="Node2D"]
+
+[node name="GroundIndicator" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_s5agk")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 1
+color = Color(0, 0.64923394, 0.6492339, 1)
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("2_s5agk")
+texture_scale = 1.5
+height = 1.0
+script = ExtResource("3_5ko66")
