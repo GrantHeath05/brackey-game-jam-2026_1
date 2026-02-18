@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://q4qit76ew26n"]
+
+[ext_resource type="Script" uid="uid://d3e7kludscib4" path="res://Scenes/main_menu.gd" id="1_28flt"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_28flt")
+
+[node name="ButtonManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 106.0
+offset_right = 465.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 30
+text = "start game"
+
+[node name="Settings" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 280.0
+offset_right = 465.0
+offset_bottom = 380.0
+theme_override_font_sizes/font_size = 30
+text = "settings"
+
+[node name="Quit" type="Button" parent="ButtonManager"]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 406.0
+offset_right = 465.0
+offset_bottom = 506.0
+theme_override_font_sizes/font_size = 30
+text = "quit"
+
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_button_2_pressed"]
+[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_button_3_pressed"]

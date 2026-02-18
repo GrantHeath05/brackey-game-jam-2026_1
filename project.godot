@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Brackeys-Game_Jam"
-run/main_scene="uid://dtp8uinalalc8"
+run/main_scene="uid://q4qit76ew26n"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Sprites/icon.svg"
 
 [audio]
 
 buses/default_bus_layout="res://Audio/default_bus_layout.tres"
+
+[autoload]
+
+DoorNavigation="*res://Scripts/doorNavigation.gd"
 
 [display]
 

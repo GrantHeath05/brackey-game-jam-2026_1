@@ -1,0 +1,12 @@
+extends Node2D
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+
+
+func _on_options_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scripts/pause_menu.gd")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
