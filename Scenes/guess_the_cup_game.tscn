@@ -5,6 +5,45 @@
 [ext_resource type="Texture2D" uid="uid://df0327g51pxjk" path="res://Sprites/icon.svg" id="3_3gavu"]
 [ext_resource type="FontFile" uid="uid://c8ksa7vqufkyy" path="res://fonts/PlaywriteNZBasic-ExtraLight.ttf" id="4_tpln3"]
 
+[sub_resource type="Animation" id="Animation_3gavu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_4n6jk"]
 resource_name = "Showing_Rock"
 length = 1.2
@@ -43,45 +82,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6]
-}
-
-[sub_resource type="Animation" id="Animation_3gavu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tpln3"]
@@ -209,6 +209,5 @@ libraries = {
 
 [connection signal="gui_input" from="Panel/Cup_1_Main" to="." method="_on_cup_1_gui_input"]
 [connection signal="gui_input" from="Panel/Cup_3" to="." method="_on_cup_3_gui_input"]
-[connection signal="mouse_entered" from="Panel/Cup_3" to="." method="_on_cup_3_mouse_entered"]
 [connection signal="gui_input" from="Panel/Cup_2" to="." method="_on_cup_2_gui_input"]
 [connection signal="pressed" from="Panel/Try_Again" to="." method="_on_try_again_pressed"]

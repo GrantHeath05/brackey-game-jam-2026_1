@@ -4,6 +4,7 @@ var cups := []
 var positions := []
 var rock_index := 0
 var input_enabled := false
+var last_result := ""   # <-- NEW: track win/lose
 
 
 func _ready():
@@ -13,11 +14,10 @@ func _ready():
 		$Panel/Cup_3
 	]
 
-	# Store original positions for reset
 	positions = cups.map(func(c): return c.position)
 
-	# Hide Try Again button at startup
 	$Panel/Try_Again.visible = false
+	$Panel/Try_Again.text = ""   # start empty
 
 	disable_input()
 	start_game()
@@ -28,13 +28,12 @@ func _ready():
 # ---------------------------------------------------------
 
 func start_game():
-	rock_index = 0  # Cup 1 always has the rock
+	rock_index = 0
 
-	# Hide results + button
 	$Panel/Results.text = ""
 	$Panel/Try_Again.visible = false
+	$Panel/Try_Again.text = ""
 
-	# Play the animation on Cup_1_Main
 	$AnimationPlayer.play("Showing_Rock")
 	await $AnimationPlayer.animation_finished
 
@@ -69,12 +68,10 @@ func swap_cups(a, b):
 	tween.parallel().tween_property(cups[b], "position", mid, 0.25)
 	tween.parallel().tween_property(cups[b], "position", pos_a, 0.25)
 
-	# Swap logical positions
 	var temp = cups[a]
 	cups[a] = cups[b]
 	cups[b] = temp
 
-	# Rock stays with Cup_1_Main
 	rock_index = cups.find($Panel/Cup_1_Main)
 
 	return tween
@@ -104,22 +101,18 @@ func reveal(cup_node):
 
 	var index = cups.find(cup_node)
 
-	# Reveal Cup_1_Main wherever it currently is
 	$AnimationPlayer.play_backwards("Showing_Rock")
 	await $AnimationPlayer.animation_finished
 
 	if index == rock_index:
-		print("WIN")
+		last_result = "win"
 		$Panel/Results.text = "Winner"
-
-		# Close UI or hide it — your choice
-		# queue_free()
-		# visible = false
+		$Panel/Try_Again.text = "Exit"
+		$Panel/Try_Again.visible = true
 	else:
-		print("LOSE")
+		last_result = "lose"
 		$Panel/Results.text = "Loser"
-
-		# Show Try Again button ONLY on loss
+		$Panel/Try_Again.text = "Try Again"
 		$Panel/Try_Again.visible = true
 
 
@@ -141,33 +134,31 @@ func _on_cup_3_gui_input(event):
 
 
 # ---------------------------------------------------------
-# RESET / TRY AGAIN
+# RESET / TRY AGAIN / EXIT
 # ---------------------------------------------------------
 
 func _on_try_again_pressed():
-	reset_game()
+	if last_result == "win":
+		queue_free()   # <-- EXIT MINIGAME
+	else:
+		reset_game()   # <-- RETRY
 
 
 func reset_game():
 	disable_input()
 
-	# Reset cup positions
 	for i in range(cups.size()):
 		cups[i].position = positions[i]
 
-	# Reset logical order
 	cups = [
 		$Panel/Cup_1_Main,
 		$Panel/Cup_2,
 		$Panel/Cup_3
 	]
 
-	# Reset rock
 	rock_index = 0
 
-	# Hide UI elements
 	$Panel/Results.text = ""
 	$Panel/Try_Again.visible = false
 
-	# Restart the game
 	start_game()

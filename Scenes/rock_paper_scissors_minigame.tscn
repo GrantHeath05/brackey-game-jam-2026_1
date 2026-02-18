@@ -1,0 +1,156 @@
+[gd_scene load_steps=8 format=3 uid="uid://coh4pooc45tb"]
+
+[ext_resource type="Script" uid="uid://d33os4lxceb3c" path="res://Scenes/rock_paper_scissors_minigame.gd" id="1_qs3ui"]
+[ext_resource type="FontFile" uid="uid://bvd2jri4pciwv" path="res://fonts/PlaywriteNZBasic-Light.ttf" id="2_ne3vp"]
+[ext_resource type="Texture2D" uid="uid://dsed5tpscv8oo" path="res://Sprites/mini_game_sprites/VS_sign.png" id="3_4aexw"]
+[ext_resource type="Texture2D" uid="uid://qjdoyaq8livc" path="res://Sprites/mini_game_sprites/blank_icon.png" id="3_ne3vp"]
+[ext_resource type="Texture2D" uid="uid://drv53jv4urbsq" path="res://Sprites/mini_game_sprites/paper_icon.png" id="4_oxrya"]
+[ext_resource type="Texture2D" uid="uid://c60bx3a8nw0jh" path="res://Sprites/mini_game_sprites/rock_icon.png" id="5_cw6xw"]
+[ext_resource type="Texture2D" uid="uid://lsmv14ad3f0q" path="res://Sprites/mini_game_sprites/scissors_icon.png" id="6_mluvg"]
+
+[node name="Rock_Paper_Scissors-Minigame" type="Control" node_paths=PackedStringArray("choices", "player_display", "cpu_display", "results_label", "try_again_btn", "rock_button", "paper_button", "scissors_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qs3ui")
+choices = NodePath("Panel/Choices")
+player_display = NodePath("Panel/vs_section/Player_Choice")
+cpu_display = NodePath("Panel/vs_section/CPU_Choice")
+results_label = NodePath("Panel/Results")
+try_again_btn = NodePath("Panel/Try_Again")
+rock_button = NodePath("Panel/Choices/Rock")
+paper_button = NodePath("Panel/Choices/Paper")
+scissors_button = NodePath("Panel/Choices/Scissors")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -103.0
+offset_right = 117.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 16.0
+offset_right = 88.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_ne3vp")
+theme_override_font_sizes/font_size = 18
+text = "Rock Paper Scissors"
+horizontal_alignment = 1
+
+[node name="vs_section" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -16.0
+offset_right = 52.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Player_Choice" type="TextureRect" parent="Panel/vs_section"]
+layout_mode = 2
+texture = ExtResource("3_ne3vp")
+stretch_mode = 2
+
+[node name="VS" type="TextureRect" parent="Panel/vs_section"]
+layout_mode = 2
+texture = ExtResource("3_4aexw")
+
+[node name="CPU_Choice" type="TextureRect" parent="Panel/vs_section"]
+layout_mode = 2
+texture = ExtResource("3_ne3vp")
+stretch_mode = 2
+
+[node name="Choices" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_top = -47.0
+offset_right = 51.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Paper" type="TextureButton" parent="Panel/Choices"]
+layout_mode = 2
+texture_normal = ExtResource("4_oxrya")
+texture_pressed = ExtResource("4_oxrya")
+texture_hover = ExtResource("4_oxrya")
+texture_disabled = ExtResource("3_ne3vp")
+texture_focused = ExtResource("4_oxrya")
+
+[node name="Rock" type="TextureButton" parent="Panel/Choices"]
+layout_mode = 2
+texture_normal = ExtResource("5_cw6xw")
+texture_pressed = ExtResource("5_cw6xw")
+texture_hover = ExtResource("5_cw6xw")
+texture_disabled = ExtResource("3_ne3vp")
+texture_focused = ExtResource("5_cw6xw")
+
+[node name="Scissors" type="TextureButton" parent="Panel/Choices"]
+layout_mode = 2
+texture_normal = ExtResource("6_mluvg")
+texture_pressed = ExtResource("6_mluvg")
+texture_hover = ExtResource("6_mluvg")
+texture_disabled = ExtResource("3_ne3vp")
+texture_focused = ExtResource("6_mluvg")
+
+[node name="Try_Again" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 21.0
+offset_right = 39.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try Again"
+
+[node name="Results" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -51.0
+offset_right = 48.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

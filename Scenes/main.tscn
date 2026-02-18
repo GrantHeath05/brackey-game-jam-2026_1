@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dtp8uinalalc8"]
+[gd_scene load_steps=17 format=4 uid="uid://dtp8uinalalc8"]
 
 [ext_resource type="Script" uid="uid://dw50mvdejf5ho" path="res://Scripts/game_manager.gd" id="1_kry3j"]
 [ext_resource type="PackedScene" uid="uid://b1ass8dr4qiol" path="res://Scenes/player.tscn" id="2_8gbba"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://brmmp08wy3kii" path="res://Sprites/tilesets/BGJ_tilemap_1.png" id="5_kry3j"]
 [ext_resource type="Texture2D" uid="uid://d1chpgjmc2h02" path="res://Sprites/64x64 textures (7).png" id="7_6bp64"]
+[ext_resource type="PackedScene" uid="uid://coh4pooc45tb" path="res://Scenes/rock_paper_scissors_minigame.tscn" id="7_6iyac"]
 [ext_resource type="Script" uid="uid://q68f46wafftw" path="res://Scripts/light_scale_changer.gd" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://du5df47uvaw3p" path="res://Scenes/guess_the_cup_game.tscn" id="11_d1ilt"]
@@ -145,21 +146,10 @@ color = Color(0.3254902, 0.3254902, 0.3254902, 1)
 
 [node name="UI" parent="." instance=ExtResource("2_jjvhh")]
 
-[node name="Guess_The_Cup_Game" parent="UI" instance=ExtResource("11_d1ilt")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Fade_&_Video_Player" parent="UI" index="1"]
+[node name="Fade_&_Video_Player" parent="UI" index="0"]
 z_index = 5
+
+[node name="Guess_The_Cup_Game" parent="UI" instance=ExtResource("11_d1ilt")]
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("3_344ge")]
 anchors_preset = 8
@@ -180,6 +170,9 @@ visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_d1ilt")
 text = "Controls"
+
+[node name="Rock_Paper_Scissors-Minigame" parent="UI" instance=ExtResource("7_6iyac")]
+visible = false
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -213,4 +206,5 @@ flicker_interval = 0.15
 [editable path="UI"]
 [editable path="UI/PauseMenu"]
 [editable path="UI/PauseMenu/InputSettings"]
+[editable path="UI/Rock_Paper_Scissors-Minigame"]
 [editable path="Player"]
