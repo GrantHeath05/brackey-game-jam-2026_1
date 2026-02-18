@@ -84,7 +84,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseMenu" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,7 +122,12 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bpi0q")
 text = "Quit to Desktop"
 
+[node name="ObjectiveLabel" type="Label" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bpi0q")
+
 [node name="Volume" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -199,6 +203,7 @@ script = ExtResource("4_vmyb1")
 bus_name = "music"
 
 [node name="InputSettings" parent="." instance=ExtResource("6_myy0f")]
+visible = false
 layout_mode = 1
 
 [node name="Close_Control_Remapper" parent="InputSettings/PanelContainer/MarginContainer/VBoxContainer" index="0"]

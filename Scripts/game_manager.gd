@@ -5,7 +5,6 @@ extends Node2D
 @export var fade_rect_controller_path: NodePath
 @export var video_player_path: NodePath
 
-var objective_box
 var fade_rect_controller
 var scene_player
 var in_cutscene: bool = false
@@ -33,6 +32,7 @@ func play_video(filename: String)->void:
 			return
 
 		set_cutscene_flag(true)
+		# get_tree().paused = true
 		show_video()
 
 		await fade_to_black()

@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 
 func _ready():
 	full_hide_all()
+	edit_objective_txt("test")
 
 func resume():
 	get_tree().paused = false
@@ -40,25 +41,21 @@ func _on_quit_to_desktop_pressed():
 	get_tree().quit
 	print_debug("Quit ran but game is not an application")
 
+func edit_objective_txt(text: String):
+	# might add \n before objective text to add a gap
+	$PauseMenu/VBoxContainer/ObjectiveLabel.text = ""
+	$PauseMenu/VBoxContainer/ObjectiveLabel.text = "Objective: "
+	$PauseMenu/VBoxContainer/ObjectiveLabel.text += text
+
 func _on_settings_pressed():
 	$Volume.visible = true
 	$PauseMenu.visible = false
 	$InputSettings.visible = false
 
-
-
 func _on_leave_settings_pressed():
 	$Volume.visible = false
 	$PauseMenu.visible = true
 	$InputSettings.visible = false
-
-
-	
-
-
-
-
-
 
 
 func _on_un_stuck_pressed() -> void:

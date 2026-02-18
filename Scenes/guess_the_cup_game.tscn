@@ -1,0 +1,214 @@
+[gd_scene load_steps=8 format=3 uid="uid://du5df47uvaw3p"]
+
+[ext_resource type="Script" uid="uid://nn2017dyllw6" path="res://Scripts/Min_games/guess_the_cup_game.gd" id="1_xeart"]
+[ext_resource type="Texture2D" uid="uid://bm8kupqrye22l" path="res://Sprites/mini_game_sprites/prototype_cup.png" id="2_4n6jk"]
+[ext_resource type="Texture2D" uid="uid://df0327g51pxjk" path="res://Sprites/icon.svg" id="3_3gavu"]
+[ext_resource type="FontFile" uid="uid://c8ksa7vqufkyy" path="res://fonts/PlaywriteNZBasic-ExtraLight.ttf" id="4_tpln3"]
+
+[sub_resource type="Animation" id="Animation_4n6jk"]
+resource_name = "Showing_Rock"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_3gavu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel/Cup_1_Main/Cup_Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpln3"]
+_data = {
+&"RESET": SubResource("Animation_3gavu"),
+&"Showing_Rock": SubResource("Animation_4n6jk")
+}
+
+[node name="Guess_The_Cup_Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xeart")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = -495.48004
+offset_bottom = -336.91
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3gavu")
+stretch_mode = 1
+
+[node name="Cup_1_Main" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 37.435005
+offset_top = 29.36375
+offset_right = 64.935
+offset_bottom = 57.363754
+
+[node name="Cup_Sprite" type="Sprite2D" parent="Panel/Cup_1_Main"]
+position = Vector2(13.5, 12.500001)
+scale = Vector2(0.84375, 0.84375006)
+texture = ExtResource("2_4n6jk")
+hframes = 7
+
+[node name="Cup_3" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 134.185
+offset_top = 28.61375
+offset_right = 161.685
+offset_bottom = 56.613754
+
+[node name="Cup_Sprite" type="Sprite2D" parent="Panel/Cup_3"]
+position = Vector2(13.5, 12.500001)
+scale = Vector2(0.84375, 0.84375006)
+texture = ExtResource("2_4n6jk")
+hframes = 7
+
+[node name="Cup_2" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_left = 84.685005
+offset_top = 29.36375
+offset_right = 112.185005
+offset_bottom = 57.36375
+
+[node name="Cup_Sprite" type="Sprite2D" parent="Panel/Cup_2"]
+position = Vector2(13.5, 12.500001)
+scale = Vector2(0.84375, 0.84375006)
+texture = ExtResource("2_4n6jk")
+hframes = 7
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_top = -28.0
+offset_right = 55.0
+offset_bottom = -1.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_tpln3")
+text = "Guess the Cup"
+
+[node name="Results" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_tpln3")
+horizontal_alignment = 1
+
+[node name="Try_Again" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_right = 4.0
+offset_bottom = 8.0
+grow_horizontal = 2
+text = "Try Again"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tpln3")
+}
+
+[connection signal="gui_input" from="Panel/Cup_1_Main" to="." method="_on_cup_1_gui_input"]
+[connection signal="gui_input" from="Panel/Cup_3" to="." method="_on_cup_3_gui_input"]
+[connection signal="mouse_entered" from="Panel/Cup_3" to="." method="_on_cup_3_mouse_entered"]
+[connection signal="gui_input" from="Panel/Cup_2" to="." method="_on_cup_2_gui_input"]
+[connection signal="pressed" from="Panel/Try_Again" to="." method="_on_try_again_pressed"]
