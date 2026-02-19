@@ -38,7 +38,7 @@ func clear_scene_references():
 
 func initialize_scene():
 	# print_debug("Everything should be hidden")
-
+	print_debug("Initilizing scene")
 	fade_from_black()
 	pause_menu.resume()
 	# print_debug("Everything should be hidden")
@@ -145,6 +145,8 @@ func go_to_level(level_tag, destination_tag) -> void:
 	# Fade in new scene
 	if fade_rect_controller:
 		await fade_rect_controller.fade_out()
+		fade_rect_controller.visible = false
+
 
 
 func trigger_player_spawn(PlayerPosition: Vector2, direction: String):
@@ -153,15 +155,15 @@ func trigger_player_spawn(PlayerPosition: Vector2, direction: String):
 func load_scene_with_fade(scene: PackedScene):
 	# 1. Fade to black using the OLD fade rect
 	if fade_rect_controller:
-		print_debug("old fade controller found")
+		# print_debug("old fade controller found")
 		await fade_rect_controller.fade_in()
-		print_debug("faded in")
+		# print_debug("faded in")
 
-	print_debug("clear old node references")
+	# print_debug("clear old node references")
 	# 2. Clear old references
 	clear_scene_references()
 
-	print_debug("change scene")
+	# print_debug("change scene")
 	# 3. Change scene
 	get_tree().change_scene_to_packed(scene)
 
@@ -174,6 +176,7 @@ func load_scene_with_fade(scene: PackedScene):
 	if fade_rect_controller:
 		print_debug("new fade controller found")
 		await fade_rect_controller.fade_out()
+		fade_rect_controller.visible = false
 		print_debug("new fade controller found")
 	if pause_menu:
 		pause_menu.resume()

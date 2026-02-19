@@ -61,6 +61,13 @@ _data = {
 layer = 5
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_nf4gj")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Controls_settings" type="Button" parent="PauseMenu/PauseMenu/VBoxContainer" index="3"]
 layout_mode = 2
@@ -89,6 +96,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_ynf5e")
 }
 
+[node name="FadeTimer" type="Timer" parent="Fade_&_Video_Player"]
+wait_time = 0.5
+
 [node name="FadeRect" type="ColorRect" parent="Fade_&_Video_Player"]
 layout_mode = 1
 anchors_preset = 15
@@ -115,6 +125,8 @@ grow_horizontal = 2
 grow_vertical = 2
 expand = true
 script = ExtResource("2_nf4gj")
+
+[connection signal="pressed" from="PauseMenu/PauseMenu/VBoxContainer/Controls_settings" to="PauseMenu" method="_on_controls_settings_pressed"]
 
 [editable path="PauseMenu"]
 [editable path="PauseMenu/InputSettings"]

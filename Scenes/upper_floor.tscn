@@ -202,7 +202,15 @@ pause_menu = NodePath("UI/PauseMenu")
 player_node = NodePath("Player")
 
 [node name="UI" parent="." instance=ExtResource("2_f7a0d")]
-visible = false
+
+[node name="PauseMenu" parent="UI" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TileMap" type="Node2D" parent="."]
 
@@ -231,3 +239,4 @@ position = Vector2(-17, 5)
 [editable path="UI/PauseMenu"]
 [editable path="UI/PauseMenu/InputSettings"]
 [editable path="Doorways/upper_floor_1"]
+[editable path="Player"]
