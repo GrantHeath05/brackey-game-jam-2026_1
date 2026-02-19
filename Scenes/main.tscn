@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://dtp8uinalalc8"]
+[gd_scene load_steps=18 format=4 uid="uid://dtp8uinalalc8"]
 
 [ext_resource type="Script" uid="uid://c20vjneb41mdf" path="res://Scenes/initialize_main.gd" id="1_rm7pj"]
 [ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="2_fowyp"]
 [ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="3_dex5k"]
+[ext_resource type="PackedScene" uid="uid://cw7y1khrar6t2" path="res://Scenes/tic_tac_toe.tscn" id="4_fdnlq"]
 [ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="4_tfnw8"]
 [ext_resource type="PackedScene" uid="uid://du5df47uvaw3p" path="res://Scenes/guess_the_cup_game.tscn" id="5_i6w5u"]
 [ext_resource type="PackedScene" uid="uid://coh4pooc45tb" path="res://Scenes/rock_paper_scissors_minigame.tscn" id="7_bmyws"]
@@ -237,11 +238,13 @@ z_index = 5
 [node name="FadeRect" parent="UI/Fade_&_Video_Player" index="1"]
 mouse_filter = 2
 
+[node name="TicTacToe" parent="UI" instance=ExtResource("4_fdnlq")]
+visible = false
+
 [node name="Guess_The_Cup_Game" parent="UI" instance=ExtResource("5_i6w5u")]
 visible = false
 
 [node name="Rock_Paper_Scissors-Minigame" parent="UI" instance=ExtResource("7_bmyws")]
-visible = false
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -292,6 +295,7 @@ position = Vector2(138.00171, 0)
 [editable path="UI"]
 [editable path="UI/PauseMenu"]
 [editable path="UI/PauseMenu/InputSettings"]
+[editable path="UI/TicTacToe"]
 [editable path="UI/Rock_Paper_Scissors-Minigame"]
 [editable path="Player"]
 [editable path="Doorways/lower_floor_1"]

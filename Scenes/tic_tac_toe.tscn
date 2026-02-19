@@ -1,0 +1,139 @@
+[gd_scene load_steps=7 format=3 uid="uid://cw7y1khrar6t2"]
+
+[ext_resource type="Script" uid="uid://3dtvag1o661c" path="res://tic_tac_toe.gd" id="1_xnw4b"]
+[ext_resource type="Texture2D" uid="uid://26k83cuefs2x" path="res://Sprites/mini_game_sprites/X_icon.png" id="2_c25wv"]
+[ext_resource type="Texture2D" uid="uid://dgayruht77153" path="res://Sprites/mini_game_sprites/O_icon.png" id="3_iumw4"]
+[ext_resource type="Texture2D" uid="uid://qjdoyaq8livc" path="res://Sprites/mini_game_sprites/blank_icon.png" id="4_fimfk"]
+[ext_resource type="FontFile" uid="uid://bvd2jri4pciwv" path="res://fonts/PlaywriteNZBasic-Light.ttf" id="5_yo3ei"]
+[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="6_c25wv"]
+
+[node name="TicTacToe" type="Control" node_paths=PackedStringArray("Current_Turn", "ResultLabel", "RestartButton")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xnw4b")
+x_icon = ExtResource("2_c25wv")
+o_icon = ExtResource("3_iumw4")
+blank_icon = ExtResource("4_fimfk")
+Current_Turn = NodePath("Current_Turn")
+ResultLabel = NodePath("ResultLabel")
+RestartButton = NodePath("RestartButton")
+
+[node name="TicTacToe_Text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = -239.0
+offset_right = 82.0
+offset_bottom = -186.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_yo3ei")
+theme_override_font_sizes/font_size = 32
+text = "Tic Tac Toe"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -157.0
+offset_right = -52.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+columns = 3
+
+[node name="TextureButton0" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton1" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton2" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton3" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton4" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton5" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton6" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton7" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="TextureButton8" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_fimfk")
+
+[node name="Current_Turn" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -187.0
+offset_right = 46.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_c25wv")
+text = "Current Turn:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = 147.0
+offset_right = 137.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("6_c25wv")
+theme_override_font_sizes/font_size = 35
+text = "Winner
+"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -103.0
+offset_top = -31.0
+offset_right = 96.0
+offset_bottom = 34.0
+text = "Try Again"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

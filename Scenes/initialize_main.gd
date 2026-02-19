@@ -3,7 +3,7 @@ extends Node2D
 @export var fade : NodePath
 @export var video_player : NodePath
 @export var pause_menu: NodePath
-@export var player_node: NodePath   # <-- renamed to avoid collision
+@export var player_node: NodePath   
 
 func _ready() -> void:
 	if fade and video_player and pause_menu and player_node:

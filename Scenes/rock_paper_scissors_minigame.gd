@@ -4,7 +4,8 @@ enum Move { ROCK, PAPER, SCISSORS }
 
 var input_enabled := false
 var icons := {}
-var last_result := ""   # <-- track win/lose/tie
+var last_result := ""   # win / lose / tie
+var first_launch := true   # <-- NEW
 
 @export var choices: HBoxContainer
 @export var player_display: TextureRect
@@ -16,7 +17,7 @@ var last_result := ""   # <-- track win/lose/tie
 @export var paper_button: TextureButton
 @export var scissors_button: TextureButton
 
-@export var blank_icon: Texture2D   # <-- assign blank frame here
+@export var blank_icon: Texture2D   # blank frame
 
 
 func _ready():
@@ -32,7 +33,15 @@ func _ready():
 
 	try_again_btn.pressed.connect(_on_try_again_pressed)
 
-	start_game()
+	# FIRST LAUNCH → Start button
+	try_again_btn.visible = true
+	try_again_btn.text = "Start"
+
+	# Disable input until Start is pressed
+	input_enabled = false
+	player_display.texture = blank_icon
+	cpu_display.texture = blank_icon
+	results_label.text = ""
 
 
 func start_game():
@@ -42,7 +51,6 @@ func start_game():
 		b.visible = true
 		b.disabled = false
 
-	# Always show blank frame when no choice is made
 	player_display.texture = blank_icon
 	cpu_display.texture = blank_icon
 
@@ -74,17 +82,18 @@ func _cpu_turn(player_move: Move):
 	match last_result:
 		"win":
 			results_label.text = "Winner"
-			try_again_btn.text = "Exit"      # <-- exit mode
+			try_again_btn.text = "Exit"
 			try_again_btn.visible = true
+			won()
 
 		"lose":
 			results_label.text = "Loser"
-			try_again_btn.text = "Try Again" # <-- retry mode
+			try_again_btn.text = "Try Again"
 			try_again_btn.visible = true
 
 		"tie":
 			results_label.text = "Tie"
-			try_again_btn.text = "Try Again" # <-- retry mode
+			try_again_btn.text = "Try Again"
 			try_again_btn.visible = true
 
 
@@ -101,9 +110,16 @@ func _determine_winner(player: Move, cpu: Move) -> String:
 
 
 func _on_try_again_pressed():
-	if last_result == "win":
-		# EXIT MODE — close or hide the minigame
-		queue_free()   # or emit a signal to your main scene
-	else:
-		# RETRY MODE
+	if first_launch:
+		first_launch = false
 		start_game()
+		return
+
+	if last_result == "win":
+		self.visible = false   # EXIT MODE
+	else:
+		start_game()           # RETRY MODE
+
+
+func won():
+	print_debug("player won rock_paper_scissors")

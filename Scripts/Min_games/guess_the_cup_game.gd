@@ -4,8 +4,8 @@ var cups := []
 var positions := []
 var rock_index := 0
 var input_enabled := false
-var last_result := ""   # <-- NEW: track win/lose
-
+var last_result := ""
+var first_launch := true   # <-- NEW
 
 func _ready():
 	cups = [
@@ -16,11 +16,11 @@ func _ready():
 
 	positions = cups.map(func(c): return c.position)
 
-	$Panel/Try_Again.visible = false
-	$Panel/Try_Again.text = ""   # start empty
+	# START BUTTON MODE
+	$Panel/Try_Again.visible = true
+	$Panel/Try_Again.text = "Start"
 
 	disable_input()
-	start_game()
 
 
 # ---------------------------------------------------------
@@ -109,6 +109,7 @@ func reveal(cup_node):
 		$Panel/Results.text = "Winner"
 		$Panel/Try_Again.text = "Exit"
 		$Panel/Try_Again.visible = true
+		won()
 	else:
 		last_result = "lose"
 		$Panel/Results.text = "Loser"
@@ -134,14 +135,19 @@ func _on_cup_3_gui_input(event):
 
 
 # ---------------------------------------------------------
-# RESET / TRY AGAIN / EXIT
+# RESET / TRY AGAIN / EXIT / START
 # ---------------------------------------------------------
 
 func _on_try_again_pressed():
+	if first_launch:
+		first_launch = false
+		start_game()
+		return
+
 	if last_result == "win":
-		queue_free()   # <-- EXIT MINIGAME
+		self.visible = false   # EXIT
 	else:
-		reset_game()   # <-- RETRY
+		reset_game()           # RETRY
 
 
 func reset_game():
@@ -162,3 +168,7 @@ func reset_game():
 	$Panel/Try_Again.visible = false
 
 	start_game()
+
+
+func won():
+	print_debug("player won guess_the_cup_game")
