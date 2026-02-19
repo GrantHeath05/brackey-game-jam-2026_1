@@ -1,13 +1,89 @@
-[gd_scene load_steps=3 format=3 uid="uid://q4qit76ew26n"]
+[gd_scene load_steps=20 format=3 uid="uid://q4qit76ew26n"]
 
 [ext_resource type="Script" uid="uid://c8axlx1xtgamk" path="res://Scenes/initialize_main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://cyaskg3sw61kw" path="res://Sprites/ui assets/Screenshot 2026-02-18 160047.png" id="2_5egv6"]
 [ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="2_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://blgm877mvnamw" path="res://Sprites/ui assets/train tunnel bg3.png" id="2_m3bi6"]
+[ext_resource type="Texture2D" uid="uid://cnvo7pt3dgpk2" path="res://Sprites/ui assets/start_signt.png" id="3_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://5oi0c4tgxlhe" path="res://Sprites/ui assets/signpostt.png" id="3_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://bngux3jd4pq22" path="res://Sprites/ui assets/debris bg.png" id="3_vtepg"]
+[ext_resource type="Texture2D" uid="uid://dxpur58nf5g77" path="res://Sprites/ui assets/start_sign_hover.png" id="5_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://nnerfymdt1h4" path="res://Sprites/ui assets/options_signt.png" id="5_opfnp"]
+[ext_resource type="Texture2D" uid="uid://cfn8c1gnoxcic" path="res://Sprites/ui assets/start_sign_pressed.png" id="5_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://dpkbs6qyphhkw" path="res://Sprites/ui assets/quit_sign.png" id="6_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://boxxxfvhixft5" path="res://Sprites/ui assets/options_sign_hover.png" id="7_trj04"]
+[ext_resource type="Texture2D" uid="uid://dpwf13imikv7x" path="res://Sprites/ui assets/options_sign_pressed.png" id="8_5egv6"]
+[ext_resource type="Texture2D" uid="uid://cohndxnnrj8bq" path="res://Sprites/ui assets/title.png" id="8_wyh8j"]
+[ext_resource type="Texture2D" uid="uid://oji7vraolsug" path="res://Sprites/ui assets/quit_sign_hover.png" id="9_16hvj"]
+[ext_resource type="Texture2D" uid="uid://dtmf1dug0xvf8" path="res://Sprites/ui assets/quit_sign_pressed.png" id="11_vtepg"]
+[ext_resource type="PackedScene" uid="uid://b8gceo814t2ky" path="res://Scenes/menu_fadeout_transition.tscn" id="18_ujyyl"]
+
+[sub_resource type="Gradient" id="Gradient_m3bi6"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.38, 0.56666666, 0.66, 0.8066667, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.5407407, 0.5407407, 0.5407407, 1, 0.2703704, 0.2703704, 0.2703704, 1, 0.14519891, 0.14519891, 0.14519891, 1, 0.048399642, 0.048399642, 0.048399642, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wyh8j"]
+gradient = SubResource("Gradient_m3bi6")
+fill = 1
+fill_from = Vector2(0.5046729, 0.5)
+fill_to = Vector2(0.73364484, 0.21962617)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_1ehe0")
 fade = NodePath("UI/Fade_&_Video_Player")
 video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
 pause_menu = NodePath("UI/PauseMenu")
+
+[node name="MovingBg2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingBg2"]
+position = Vector2(-26.000008, 23.249979)
+scale = Vector2(1.5283204, 1.5283204)
+texture = ExtResource("2_m3bi6")
+
+[node name="PointLight2D" type="PointLight2D" parent="MovingBg2"]
+position = Vector2(239.75998, 171.00002)
+scale = Vector2(10.304999, 10.304999)
+color = Color(0.98984236, 1, 0.6857064, 1)
+energy = 6.33
+texture = SubResource("GradientTexture2D_wyh8j")
+
+[node name="PointLight2D2" type="PointLight2D" parent="MovingBg2"]
+position = Vector2(426.75998, 171.00002)
+scale = Vector2(10.304999, 10.304999)
+color = Color(0.98984236, 1, 0.6857064, 1)
+energy = 6.33
+texture = SubResource("GradientTexture2D_wyh8j")
+
+[node name="MovingBg" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -28.0
+offset_right = -177.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MovingBg"]
+visible = false
+position = Vector2(55.00001, 35)
+scale = Vector2(1.821101, 1.821101)
+texture = ExtResource("2_5egv6")
+
+[node name="wall" type="Sprite2D" parent="MovingBg"]
+position = Vector2(-193, -24)
+scale = Vector2(1.821101, 1.821101)
+texture = ExtResource("3_vtepg")
 
 [node name="UI" parent="." instance=ExtResource("2_ce3w2")]
 
@@ -32,42 +108,64 @@ visible = false
 [node name="Fade_&_Video_Player" parent="UI" index="1"]
 visible = false
 
+[node name="post" type="Sprite2D" parent="."]
+position = Vector2(273, 405.00003)
+scale = Vector2(2.7200012, 2.7200012)
+texture = ExtResource("3_ce3w2")
+
+[node name="title" type="Sprite2D" parent="."]
+position = Vector2(409, 166)
+scale = Vector2(1.581563, 1.581563)
+texture = ExtResource("8_wyh8j")
+
 [node name="ButtonManager" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 26.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 66.0
 
-[node name="Start" type="Button" parent="ButtonManager"]
+[node name="Start" type="TextureButton" parent="ButtonManager"]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 106.0
-offset_right = 465.0
-offset_bottom = 256.0
-theme_override_font_sizes/font_size = 30
-text = "start game"
+offset_left = 22.0
+offset_top = 288.0
+offset_right = 470.0
+offset_bottom = 368.0
+rotation = -0.054388314
+texture_normal = ExtResource("3_1ehe0")
+texture_pressed = ExtResource("5_t1dhk")
+texture_hover = ExtResource("5_cp0ys")
 
-[node name="Settings" type="Button" parent="ButtonManager"]
+[node name="Settings" type="TextureButton" parent="ButtonManager"]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 280.0
-offset_right = 465.0
-offset_bottom = 380.0
-theme_override_font_sizes/font_size = 30
-text = "settings"
+offset_left = 47.0
+offset_top = 386.00003
+offset_right = 495.0
+offset_bottom = 466.00003
+rotation = -0.012530999
+texture_normal = ExtResource("5_opfnp")
+texture_pressed = ExtResource("8_5egv6")
+texture_hover = ExtResource("7_trj04")
 
-[node name="Quit" type="Button" parent="ButtonManager"]
+[node name="Quit" type="TextureButton" parent="ButtonManager"]
 layout_mode = 0
-offset_left = 115.0
-offset_top = 406.0
-offset_right = 465.0
-offset_bottom = 506.0
-theme_override_font_sizes/font_size = 30
-text = "quit"
+offset_left = 36.0
+offset_top = 494.0
+offset_right = 484.0
+offset_bottom = 574.0
+texture_normal = ExtResource("6_cp0ys")
+texture_pressed = ExtResource("11_vtepg")
+texture_hover = ExtResource("9_16hvj")
+
+[node name="fadeout" parent="." instance=ExtResource("18_ujyyl")]
+visible = false
+
+[node name="fadeTimer" type="Timer" parent="fadeout"]
 
 [connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="fadeout/fadeTimer" to="." method="_on_fade_timer_timeout"]
 
 [editable path="UI"]
 [editable path="UI/PauseMenu"]
