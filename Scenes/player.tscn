@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1ass8dr4qiol"]
+[gd_scene load_steps=17 format=3 uid="uid://b1ass8dr4qiol"]
 
 [ext_resource type="Script" uid="uid://bfr43wat8e4p3" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://drfpw0rlhgmrv" path="res://Sprites/temp_suit_player.png" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://outfs6xa702r" path="res://Scripts/player_camera.gd" id="3_6t5aa"]
 [ext_resource type="Texture2D" uid="uid://ccumprf2l6qgc" path="res://Sprites/64x64 textures (93).png" id="4_x3wgy"]
 [ext_resource type="Script" uid="uid://jk87vknmwau0" path="res://Scripts/player_light_script.gd" id="5_fkybt"]
 [ext_resource type="AudioStream" uid="uid://b8kocr7sr2tjo" path="res://Audio/freesound_community-concrete-footsteps-6752.mp3" id="6_x3wgy"]
@@ -494,7 +493,6 @@ frame = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(10, 10)
-script = ExtResource("3_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8gbba")

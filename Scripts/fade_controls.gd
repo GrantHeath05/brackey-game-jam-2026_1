@@ -1,4 +1,6 @@
 extends Control
+
+
 # Functions play fade animation then signal the main script when finished
 func fade_in() -> Signal:
 	$Fade_to_Black.play("fade_in")

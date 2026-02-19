@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://brvmxklahrka5"]
+[gd_scene load_steps=9 format=3 uid="uid://brvmxklahrka5"]
 
+[ext_resource type="PackedScene" uid="uid://istyookg2bxj" path="res://Scenes/pause_menu.tscn" id="1_nf4gj"]
 [ext_resource type="Script" uid="uid://f0if1qvo7aqy" path="res://Scripts/fade_controls.gd" id="1_qdvrb"]
+[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="2_2246s"]
 [ext_resource type="Script" uid="uid://ut870ecfnuyb" path="res://Scripts/cutscene-renderer.gd" id="2_nf4gj"]
 
 [sub_resource type="Animation" id="Animation_6bp64"]
@@ -58,6 +60,19 @@ _data = {
 [node name="UI" type="CanvasLayer"]
 layer = 5
 
+[node name="PauseMenu" parent="." instance=ExtResource("1_nf4gj")]
+
+[node name="Controls_settings" type="Button" parent="PauseMenu/PauseMenu/VBoxContainer" index="3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2246s")
+text = "Controls"
+
+[node name="Volume" parent="PauseMenu" index="2"]
+visible = true
+
+[node name="InputSettings" parent="PauseMenu" index="3"]
+visible = true
+
 [node name="Fade_&_Video_Player" type="Control" parent="."]
 layout_direction = 2
 layout_mode = 3
@@ -100,3 +115,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand = true
 script = ExtResource("2_nf4gj")
+
+[editable path="PauseMenu"]
+[editable path="PauseMenu/InputSettings"]

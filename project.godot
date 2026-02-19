@@ -21,7 +21,8 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-DoorNavigation="*res://Scripts/doorNavigation.gd"
+DoorNavigation="res://Scripts/doorNavigation.gd"
+GameManager="*res://Scenes/game_manager.tscn"
 
 [display]
 
@@ -30,6 +31,10 @@ window/size/viewport_height=720
 window/size/mode=1
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [file_customization]
 
@@ -43,6 +48,13 @@ folder_colors={
 "res://Textures/": "pink",
 "res://fonts/": "orange"
 }
+
+[global_group]
+
+door_tag="tag for all doors"
+upper_1="upper door 1"
+lower_1="lower door 1"
+doors=""
 
 [input]
 

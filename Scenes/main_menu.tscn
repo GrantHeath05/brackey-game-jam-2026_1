@@ -1,9 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://q4qit76ew26n"]
+[gd_scene load_steps=3 format=3 uid="uid://q4qit76ew26n"]
 
-[ext_resource type="Script" uid="uid://d3e7kludscib4" path="res://Scenes/main_menu.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://c8axlx1xtgamk" path="res://Scenes/initialize_main_menu.gd" id="1_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="2_ce3w2"]
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource("1_28flt")
+script = ExtResource("1_1ehe0")
+fade = NodePath("UI/Fade_&_Video_Player")
+video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
+pause_menu = NodePath("UI/PauseMenu")
+
+[node name="UI" parent="." instance=ExtResource("2_ce3w2")]
+
+[node name="PauseMenu" parent="UI" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" parent="UI/PauseMenu" index="1"]
+visible = false
+
+[node name="UnStuck" parent="UI/PauseMenu/PauseMenu/VBoxContainer" index="2"]
+visible = false
+
+[node name="ObjectiveLabel" parent="UI/PauseMenu/PauseMenu/VBoxContainer" index="5"]
+visible = false
+
+[node name="Fade_&_Video_Player" parent="UI" index="1"]
+visible = false
 
 [node name="ButtonManager" type="Control" parent="."]
 layout_mode = 3
@@ -39,8 +66,9 @@ theme_override_font_sizes/font_size = 30
 text = "quit"
 
 [connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="ButtonManager/Start" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_button_2_pressed"]
-[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonManager/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="ButtonManager/Quit" to="." method="_on_button_3_pressed"]
+
+[editable path="UI"]
+[editable path="UI/PauseMenu"]
+[editable path="UI/PauseMenu/InputSettings"]

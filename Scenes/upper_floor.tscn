@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bl2ddluytkayl"]
+[gd_scene load_steps=10 format=4 uid="uid://bl2ddluytkayl"]
 
 [ext_resource type="Script" uid="uid://dyqn14a6qj3g2" path="res://Scenes/upper_floor.gd" id="1_1o1wk"]
 [ext_resource type="Texture2D" uid="uid://brmmp08wy3kii" path="res://Sprites/tilesets/BGJ_tilemap_1.png" id="1_27m1w"]
 [ext_resource type="PackedScene" uid="uid://36k6sqknkdsn" path="res://Scenes/doorway.tscn" id="1_d3fgv"]
 [ext_resource type="Texture2D" uid="uid://cyc4xfbul27lx" path="res://Sprites/tilesets/BGJ_stairs_tilemap.png" id="2_1o1wk"]
+[ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="2_f7a0d"]
+[ext_resource type="PackedScene" uid="uid://b1ass8dr4qiol" path="res://Scenes/player.tscn" id="6_krh42"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f7a0d"]
 texture = ExtResource("1_27m1w")
@@ -190,6 +192,13 @@ sources/1 = SubResource("TileSetAtlasSource_krh42")
 
 [node name="UpperFloor" type="Node2D"]
 script = ExtResource("1_1o1wk")
+fade = NodePath("UI/Fade_&_Video_Player")
+video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
+pause_menu = NodePath("UI/PauseMenu")
+player_node = NodePath("Player")
+
+[node name="UI" parent="." instance=ExtResource("2_f7a0d")]
+visible = false
 
 [node name="TileMap" type="Node2D" parent="."]
 
@@ -200,15 +209,21 @@ tile_set = SubResource("TileSet_1851h")
 
 [node name="Doorways" type="Node" parent="."]
 
-[node name="doorway2-1" parent="Doorways" instance=ExtResource("1_d3fgv")]
-position = Vector2(80, 37)
+[node name="upper_floor_1" parent="Doorways" groups=["doors"] instance=ExtResource("1_d3fgv")]
+position = Vector2(-2, 2)
+door_tag = "upper_1"
 destination_level_tag = "main"
-destination_door_tag = "1-2"
+destination_door_tag = "lower_1"
 
-[node name="CollisionShape2D" parent="Doorways/doorway2-1" index="0"]
-position = Vector2(24, 0)
+[node name="CollisionShape2D" parent="Doorways/upper_floor_1" index="0" groups=["upper_1"]]
+position = Vector2(-20, -1)
 
-[node name="Spawn" parent="Doorways/doorway2-1" index="1"]
-position = Vector2(1, 0)
+[node name="Spawn" parent="Doorways/upper_floor_1" index="1" groups=["upper_1"]]
+position = Vector2(1, 1)
 
-[editable path="Doorways/doorway2-1"]
+[node name="Player" parent="." instance=ExtResource("6_krh42")]
+
+[editable path="UI"]
+[editable path="UI/PauseMenu"]
+[editable path="UI/PauseMenu/InputSettings"]
+[editable path="Doorways/upper_floor_1"]

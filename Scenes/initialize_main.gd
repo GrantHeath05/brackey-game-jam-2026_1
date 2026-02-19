@@ -3,17 +3,14 @@ extends Node2D
 @export var fade : NodePath
 @export var video_player : NodePath
 @export var pause_menu: NodePath
-@export var player_node: NodePath
-
+@export var player_node: NodePath   # <-- renamed to avoid collision
 
 func _ready() -> void:
-	# Register UI components with GameManager
-	if fade and video_player and pause_menu:
+	if fade and video_player and pause_menu and player_node:
 		GameManager.register_fade_rect(get_node(fade))
 		GameManager.register_video_player(get_node(video_player))
 		GameManager.register_pause_menu(get_node(pause_menu))
 		GameManager.register_player(get_node(player_node))
-
 	else:
 		print_debug("Something went wrong in initialize_main_menu")
 		return
@@ -21,7 +18,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	GameManager.initialize_scene()
 
-	# Teleport player to correct door
 	if GameManager.spawn_door_tag != null and GameManager.spawn_door_tag != "":
 		teleport_player_to_door(GameManager.spawn_door_tag)
 

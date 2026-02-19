@@ -1,21 +1,20 @@
-[gd_scene load_steps=18 format=4 uid="uid://dtp8uinalalc8"]
+[gd_scene load_steps=17 format=4 uid="uid://dtp8uinalalc8"]
 
-[ext_resource type="Script" uid="uid://dw50mvdejf5ho" path="res://Scripts/game_manager.gd" id="1_kry3j"]
-[ext_resource type="PackedScene" uid="uid://b1ass8dr4qiol" path="res://Scenes/player.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="2_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://istyookg2bxj" path="res://Scenes/pause_menu.tscn" id="3_344ge"]
-[ext_resource type="Texture2D" uid="uid://cyc4xfbul27lx" path="res://Sprites/tilesets/BGJ_stairs_tilemap.png" id="5_21xkr"]
-[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="5_d1ilt"]
-[ext_resource type="Texture2D" uid="uid://brmmp08wy3kii" path="res://Sprites/tilesets/BGJ_tilemap_1.png" id="5_kry3j"]
-[ext_resource type="Texture2D" uid="uid://d1chpgjmc2h02" path="res://Sprites/64x64 textures (7).png" id="7_6bp64"]
-[ext_resource type="PackedScene" uid="uid://coh4pooc45tb" path="res://Scenes/rock_paper_scissors_minigame.tscn" id="7_6iyac"]
-[ext_resource type="Script" uid="uid://q68f46wafftw" path="res://Scripts/light_scale_changer.gd" id="7_344ge"]
-[ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="9_ynf5e"]
-[ext_resource type="PackedScene" uid="uid://du5df47uvaw3p" path="res://Scenes/guess_the_cup_game.tscn" id="11_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://36k6sqknkdsn" path="res://Scenes/doorway.tscn" id="13_fdnlq"]
+[ext_resource type="Script" uid="uid://c20vjneb41mdf" path="res://Scenes/initialize_main.gd" id="1_rm7pj"]
+[ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="2_fowyp"]
+[ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="3_dex5k"]
+[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="4_tfnw8"]
+[ext_resource type="PackedScene" uid="uid://du5df47uvaw3p" path="res://Scenes/guess_the_cup_game.tscn" id="5_i6w5u"]
+[ext_resource type="PackedScene" uid="uid://coh4pooc45tb" path="res://Scenes/rock_paper_scissors_minigame.tscn" id="7_bmyws"]
+[ext_resource type="Texture2D" uid="uid://brmmp08wy3kii" path="res://Sprites/tilesets/BGJ_tilemap_1.png" id="8_55r8r"]
+[ext_resource type="Texture2D" uid="uid://cyc4xfbul27lx" path="res://Sprites/tilesets/BGJ_stairs_tilemap.png" id="9_3yc31"]
+[ext_resource type="PackedScene" uid="uid://b1ass8dr4qiol" path="res://Scenes/player.tscn" id="10_3q0qt"]
+[ext_resource type="Texture2D" uid="uid://d1chpgjmc2h02" path="res://Sprites/64x64 textures (7).png" id="11_df3hq"]
+[ext_resource type="Script" uid="uid://q68f46wafftw" path="res://Scripts/light_scale_changer.gd" id="12_db5jy"]
+[ext_resource type="PackedScene" uid="uid://36k6sqknkdsn" path="res://Scenes/doorway.tscn" id="13_6m82u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdnlq"]
-texture = ExtResource("5_kry3j")
+texture = ExtResource("8_55r8r")
 10:8/0 = 0
 11:8/0 = 0
 11:9/0 = 0
@@ -144,7 +143,7 @@ texture = ExtResource("5_kry3j")
 8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkdf5"]
-texture = ExtResource("5_21xkr")
+texture = ExtResource("9_3yc31")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, 8, 0.35971832, 8, 3.4173164, -2.6978807, 8)
 1:0/0 = 0
@@ -202,11 +201,13 @@ radius = 5.0
 height = 16.0
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_kry3j")
-fade_rect_controller_path = NodePath("UI/Fade_&_Video_Player")
-video_player_path = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
+script = ExtResource("1_rm7pj")
+fade = NodePath("UI/Fade_&_Video_Player")
+video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
+pause_menu = NodePath("UI/PauseMenu")
+player_node = NodePath("Player")
 
-[node name="Indicator" parent="." instance=ExtResource("9_ynf5e")]
+[node name="Indicator" parent="." instance=ExtResource("2_fowyp")]
 position = Vector2(-58, 144)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -214,35 +215,32 @@ visible = false
 position = Vector2(114, -11)
 color = Color(0.3254902, 0.3254902, 0.3254902, 1)
 
-[node name="UI" parent="." instance=ExtResource("2_jjvhh")]
-visible = false
+[node name="UI" parent="." instance=ExtResource("3_dex5k")]
 
-[node name="Fade_&_Video_Player" parent="UI" index="0"]
-z_index = 5
-
-[node name="Guess_The_Cup_Game" parent="UI" instance=ExtResource("11_d1ilt")]
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("3_344ge")]
+[node name="PauseMenu" parent="UI" index="0"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-player_path = NodePath("../../Player")
 
-[node name="PauseMenu" parent="UI/PauseMenu" index="1"]
-visible = false
-
-[node name="Controls_settings" type="Button" parent="UI/PauseMenu/PauseMenu/VBoxContainer" index="2"]
+[node name="Controls_settings2" type="Button" parent="UI/PauseMenu/PauseMenu/VBoxContainer" index="2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("5_d1ilt")
+theme_override_fonts/font = ExtResource("4_tfnw8")
 text = "Controls"
 
-[node name="Rock_Paper_Scissors-Minigame" parent="UI" instance=ExtResource("7_6iyac")]
+[node name="Fade_&_Video_Player" parent="UI" index="1"]
+z_index = 5
+
+[node name="FadeRect" parent="UI/Fade_&_Video_Player" index="1"]
+mouse_filter = 2
+
+[node name="Guess_The_Cup_Game" parent="UI" instance=ExtResource("5_i6w5u")]
+visible = false
+
+[node name="Rock_Paper_Scissors-Minigame" parent="UI" instance=ExtResource("7_bmyws")]
 visible = false
 
 [node name="TileMapLayers" type="Node2D" parent="."]
@@ -259,7 +257,7 @@ tile_set = SubResource("TileSet_21xkr")
 tile_map_data = PackedByteArray("AAAbAAcAAQAAAAAAAAAcAAcAAQABAAAAAAAbAP//AQAAAAEAAAAbAAAAAQAAAAIAAAAcAP//AQABAAEAAAAcAAAAAQABAAIAAAAbAAgAAQAAAAEAAAAbAAkAAQAAAAIAAAAcAAgAAQABAAEAAAAcAAkAAQABAAIAAAAdAAYAAQAAAAAAAAAdAAcAAQAAAAEAAAAdAAgAAQAAAAIAAAAdAAkAAQAAAAMAAAAbAP7/AQAAAAAAAAAcAP7/AQABAAAAAAAdAP3/AQAAAAAAAAAdAP7/AQAAAAEAAAAdAP//AQAAAAIAAAAeAP3/AQABAAAAAAAeAP7/AQABAAEAAAAeAP//AQABAAIAAAAeAAkAAQABAAMAAAAeAAgAAQABAAIAAAAeAAcAAQABAAEAAAAeAAYAAQABAAAAAAAdAAAAAQAAAAMAAAAeAAAAAQABAAMAAAAbABAAAQAAAAAAAAAbABEAAQAAAAEAAAAbABIAAQAAAAIAAAAcABAAAQABAAAAAAAcABEAAQABAAEAAAAcABIAAQABAAIAAAAdAA8AAQAAAAAAAAAdABAAAQAAAAEAAAAdABEAAQAAAAIAAAAeAA8AAQABAAAAAAAeABAAAQABAAEAAAAeABEAAQABAAIAAAAdABIAAQAAAAMAAAAeABIAAQABAAMAAAAfAP3/AQAEAAEAAAAfAP7/AQAEAAIAAAAfAP//AQAEAAMAAAAgAP3/AQAFAAEAAAAgAP7/AQAFAAIAAAAgAP//AQAFAAMAAAAfAAYAAQAEAAEAAAAfAAcAAQAEAAIAAAAfAAgAAQAEAAMAAAAgAAYAAQAFAAEAAAAgAAcAAQAFAAIAAAAgAAgAAQAFAAMAAAAfAA8AAQAEAAEAAAAfABAAAQAEAAIAAAAfABEAAQAEAAMAAAAgAA8AAQAFAAEAAAAgABAAAQAFAAIAAAAgABEAAQAFAAMAAAA=")
 tile_set = SubResource("TileSet_21xkr")
 
-[node name="Player" parent="." instance=ExtResource("2_8gbba")]
+[node name="Player" parent="." instance=ExtResource("10_3q0qt")]
 
 [node name="Camera2D" parent="Player" index="1"]
 zoom = Vector2(6.1, 6.1)
@@ -274,31 +272,26 @@ shape = SubResource("CapsuleShape2D_kry3j")
 [node name="PointLight2D" parent="Player" index="4"]
 visible = false
 texture_filter = 3
-texture = ExtResource("7_6bp64")
+texture = ExtResource("11_df3hq")
 texture_scale = 2.0
-script = ExtResource("7_344ge")
+script = ExtResource("12_db5jy")
 flicker_interval = 0.15
 
 [node name="Doorways" type="Node" parent="."]
 
-[node name="doorway1-2" parent="Doorways" instance=ExtResource("13_fdnlq")]
-position = Vector2(529, -32)
+[node name="lower_floor_1" parent="Doorways" groups=["doors"] instance=ExtResource("13_6m82u")]
+position = Vector2(504.99997, -33)
 scale = Vector2(0.15941852, -0.5513508)
+door_tag = "lower_1"
 destination_level_tag = "upper_floor"
-destination_door_tag = "2-1"
-spawn_direction = "right"
+destination_door_tag = "upper_1"
 
-[node name="CollisionShape2D" parent="Doorways/doorway1-2" index="0"]
-position = Vector2(-31.363958, 0)
-
-[node name="Spawn" parent="Doorways/doorway1-2" index="1"]
-position = Vector2(-125.45593, 0)
-
-[connection signal="pressed" from="UI/PauseMenu/PauseMenu/VBoxContainer/Controls_settings" to="UI/PauseMenu" method="_on_controls_settings_pressed"]
+[node name="CollisionShape2D" parent="Doorways/lower_floor_1" index="0"]
+position = Vector2(138.00171, 0)
 
 [editable path="UI"]
 [editable path="UI/PauseMenu"]
 [editable path="UI/PauseMenu/InputSettings"]
 [editable path="UI/Rock_Paper_Scissors-Minigame"]
 [editable path="Player"]
-[editable path="Doorways/doorway1-2"]
+[editable path="Doorways/lower_floor_1"]
