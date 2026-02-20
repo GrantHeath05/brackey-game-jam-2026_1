@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cbiafhg1xttjr"]
 
-[ext_resource type="Script" uid="uid://c44p7rb7t0y8r" path="res://tic_tac_toe_monster.gd" id="1_fi5ie"]
+[ext_resource type="Script" uid="uid://c44p7rb7t0y8r" path="res://Scripts/tic_tac_toe_monster.gd" id="1_fi5ie"]
 [ext_resource type="Texture2D" uid="uid://ci4804tmcsl75" path="res://Sprites/TEMP/slime_sheet.png" id="2_yu18p"]
 [ext_resource type="Script" uid="uid://d3v0i74qc2ivy" path="res://Scenes/Interactable_Monster_Scene/Press_to_Interact_Label.gd" id="3_y58mu"]
 [ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="4_rbhdr"]

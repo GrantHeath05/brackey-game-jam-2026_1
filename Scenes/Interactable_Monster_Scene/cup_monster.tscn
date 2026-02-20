@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://mm3kepdy6b1d"]
 
-[ext_resource type="Script" uid="uid://lot4qv38v320" path="res://cup_monster_script.gd" id="1_ptde7"]
+[ext_resource type="Script" uid="uid://lot4qv38v320" path="res://Scripts/cup_monster_script.gd" id="1_ptde7"]
 [ext_resource type="Texture2D" uid="uid://ci4804tmcsl75" path="res://Sprites/TEMP/slime_sheet.png" id="2_ofvwt"]
 [ext_resource type="Script" uid="uid://d3v0i74qc2ivy" path="res://Scenes/Interactable_Monster_Scene/Press_to_Interact_Label.gd" id="3_b3eah"]
 [ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="4_2grxn"]

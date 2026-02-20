@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dqmkybjm1rpdy"]
 
-[ext_resource type="Script" uid="uid://cjmkwek6ogelk" path="res://rps_monster.gd" id="1_ij4gr"]
+[ext_resource type="Script" uid="uid://cjmkwek6ogelk" path="res://Scripts/rps_monster.gd" id="1_ij4gr"]
 [ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="2_7opp1"]
 [ext_resource type="Texture2D" uid="uid://ci4804tmcsl75" path="res://Sprites/TEMP/slime_sheet.png" id="3_jqs4s"]
 [ext_resource type="Script" uid="uid://d3v0i74qc2ivy" path="res://Scenes/Interactable_Monster_Scene/Press_to_Interact_Label.gd" id="4_kn8q6"]

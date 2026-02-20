@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://clailhmk32nu1"]
 
-[ext_resource type="Script" uid="uid://cen5t5rte0qoo" path="res://text_box.gd" id="1_nwibb"]
+[ext_resource type="Script" uid="uid://cen5t5rte0qoo" path="res://Scripts/text_box.gd" id="1_nwibb"]
 
 [node name="TextBox" type="Control"]
 visible = false
