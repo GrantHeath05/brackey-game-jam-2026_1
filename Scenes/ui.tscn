@@ -66,6 +66,9 @@ layer = 5
 [node name="Number-of-Games-Label" parent="." instance=ExtResource("1_q7pk6")]
 script = ExtResource("2_m78vo")
 
+[node name="Label" parent="Number-of-Games-Label" index="0"]
+text = ""
+
 [node name="PauseMenu" parent="." instance=ExtResource("1_nf4gj")]
 anchors_preset = 8
 anchor_left = 0.5

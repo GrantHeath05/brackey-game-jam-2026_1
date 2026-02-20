@@ -21,6 +21,7 @@ var first_launch := true   # <-- NEW
 
 
 func _ready():
+	GameManager.register_RPS(self)
 	icons = {
 		Move.ROCK: rock_button.texture_normal,
 		Move.PAPER: paper_button.texture_normal,
@@ -125,3 +126,4 @@ func won():
 	print_debug("player won rock_paper_scissors")
 	GameManager.RPS_complete = true
 	GameManager.update_game_tracking()
+

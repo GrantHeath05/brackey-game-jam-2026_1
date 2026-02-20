@@ -102,9 +102,6 @@ visible = false
 [node name="Fade_&_Video_Player" parent="UI" index="2"]
 visible = false
 
-[node name="TextBox" parent="UI" index="3"]
-visible = false
-
 [node name="post" type="Sprite2D" parent="."]
 position = Vector2(273, 405.00003)
 scale = Vector2(2.7200012, 2.7200012)

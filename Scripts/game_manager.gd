@@ -38,6 +38,10 @@ var guess_cup_complete = false
 var RPS_complete = false
 var all_games_completed = false
 
+var rock_paper_scissors
+var tictactoe
+var cup_game
+
 # update tracking label and varibles
 func update_game_tracking():
 	num_of_games_label.update_game_tracker_label()
@@ -58,6 +62,8 @@ func initialize_scene():
 	# print_debug("Initilizing scene")
 	fade_from_black()
 	pause_menu.resume()
+	update_game_tracking()
+
 	# print_debug("Everything should be hidden")
 
 func register_num_of_games_label(node):
@@ -81,6 +87,19 @@ func register_video_player(node):
 # register function for player script to register(self)
 func register_fade_rect(node):
 	fade_rect_controller = node
+	# print_debug("initilized: ", node)
+
+# register RPS game
+func register_RPS(node):
+	rock_paper_scissors = node
+	# print_debug("initilized: ", node)
+# register RPS game
+func register_cup_game(node):
+	cup_game = node
+	# print_debug("initilized: ", node)
+# register RPS game
+func register_tictactoe(node):
+	tictactoe = node
 	# print_debug("initilized: ", node)
 
 # input file name as a parameter. function just runs sceneplayer.play_cutscene, handles errors here thogh
@@ -200,6 +219,8 @@ func load_scene_with_fade(scene: PackedScene):
 	# 4. Wait one frame so the new scene can run _ready()
 	await get_tree().process_frame
 
+	update_game_tracking()
+
 	# 5. Now the new scene should have registered its UI
 	#    Fade from black using the NEW fade rect
 	if fade_rect_controller:
@@ -212,3 +233,17 @@ func load_scene_with_fade(scene: PackedScene):
 # updates objective tag using a String parameter called 'tag'
 func update_objective_tag(tag: String):
 	pause_menu.edit_objective_txt(tag)
+
+
+func show_cup_game():
+	print_debug("Cup game has been unhidden")
+	cup_game.visible = true
+
+func show_RPS():
+	print_debug("rock paper scissors has been unhidden")
+	rock_paper_scissors.visible = true
+
+
+func show_tictactoe():
+	print_debug("tictactoe has been unhidden")
+	tictactoe.visible = true

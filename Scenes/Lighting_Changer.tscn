@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://vm33hd4fekx3"]
+
+[node name="Lighting" type="CanvasModulate"]
+color = Color(0.29402778, 0.29402778, 0.29402775, 1)

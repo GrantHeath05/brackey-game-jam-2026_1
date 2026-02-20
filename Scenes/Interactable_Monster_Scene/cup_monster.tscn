@@ -1,0 +1,100 @@
+[gd_scene load_steps=10 format=3 uid="uid://mm3kepdy6b1d"]
+
+[ext_resource type="Script" uid="uid://lot4qv38v320" path="res://cup_monster_script.gd" id="1_ptde7"]
+[ext_resource type="Texture2D" uid="uid://ci4804tmcsl75" path="res://Sprites/TEMP/slime_sheet.png" id="2_ofvwt"]
+[ext_resource type="Script" uid="uid://d3v0i74qc2ivy" path="res://Scenes/Interactable_Monster_Scene/Press_to_Interact_Label.gd" id="3_b3eah"]
+[ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="4_2grxn"]
+[ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="5_2grxn"]
+
+[sub_resource type="Animation" id="Animation_b3eah"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_2grxn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ee3hg"]
+_data = {
+&"Idle": SubResource("Animation_b3eah"),
+&"RESET": SubResource("Animation_2grxn")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oetei"]
+radius = 29.017237
+
+[node name="Cup_Monster" type="Node2D"]
+script = ExtResource("1_ptde7")
+
+[node name="Indicator" parent="." instance=ExtResource("5_2grxn")]
+position = Vector2(1, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ofvwt")
+hframes = 7
+vframes = 2
+frame = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ee3hg")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 11)
+shape = SubResource("CircleShape2D_oetei")
+
+[node name="Control" type="Control" parent="."]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_top = -15.0
+offset_right = 52.0
+offset_bottom = 25.0
+grow_horizontal = 2
+script = ExtResource("3_b3eah")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_2grxn")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[editable path="Indicator"]

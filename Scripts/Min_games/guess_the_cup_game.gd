@@ -5,9 +5,10 @@ var positions := []
 var rock_index := 0
 var input_enabled := false
 var last_result := ""
-var first_launch := true   # <-- NEW
+var first_launch := true 
 
 func _ready():
+	GameManager.register_cup_game(self)
 	cups = [
 		$Panel/Cup_1_Main,
 		$Panel/Cup_2,
@@ -174,3 +175,4 @@ func won():
 	print_debug("player won guess_the_cup_game")
 	GameManager.guess_cup_complete = true
 	GameManager.update_game_tracking()
+

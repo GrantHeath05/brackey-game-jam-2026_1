@@ -15,6 +15,8 @@ var game_over := false
 var first_launch := true   # <-- NEW
 
 func _ready():
+    GameManager.register_tictactoe(self)
+
     board.resize(9)
     board.fill(" ")
 
@@ -172,3 +174,4 @@ func won():
     print_debug("Player won tic tac toe")
     GameManager.tictactoe_complete = true
     GameManager.update_game_tracking()
+
