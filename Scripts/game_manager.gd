@@ -6,7 +6,10 @@ extends Node2D
 # Player Varibles
 var Player
 var is_dark: bool = false
-
+# 
+#**********************
+# Top left label for number of games
+var num_of_games_label
 # 
 #**********************
 # Pause Menu
@@ -27,7 +30,17 @@ const lower_1 = preload("res://Scenes/main.tscn")
 const upper_1 = preload("res://Scenes/upper_floor.tscn")
 var spawn_door_tag
 signal on_trigger_player_spawn
+# 
+#**********************
+# Game Tracking
+var tictactoe_complete = false
+var guess_cup_complete = false
+var RPS_complete = false
+var all_games_completed = false
 
+# update tracking label and varibles
+func update_game_tracking():
+	num_of_games_label.update_game_tracker_label()
 
 # pause the game and open pause menu
 func pause_game():
@@ -46,6 +59,9 @@ func initialize_scene():
 	fade_from_black()
 	pause_menu.resume()
 	# print_debug("Everything should be hidden")
+
+func register_num_of_games_label(node):
+	num_of_games_label = node
 
 # register function for player script to register(self)
 func register_pause_menu(node):

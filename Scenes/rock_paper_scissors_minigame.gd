@@ -123,3 +123,5 @@ func _on_try_again_pressed():
 
 func won():
 	print_debug("player won rock_paper_scissors")
+	GameManager.RPS_complete = true
+	GameManager.update_game_tracking()

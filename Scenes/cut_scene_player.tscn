@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bur4qpfukh4dy"]
+
+[ext_resource type="Texture2D" uid="uid://dmitpn5et5he8" path="res://Sprites/indicator_circle.png" id="1_2uyh4"]
+[ext_resource type="Texture2D" uid="uid://d1chpgjmc2h02" path="res://Sprites/light_sprites/64x64 textures (7).png" id="2_r8jxf"]
+[ext_resource type="Script" uid="uid://jk87vknmwau0" path="res://Scripts/player_light_script.gd" id="3_typva"]
+[ext_resource type="Script" uid="uid://bx3nomp5ltba0" path="res://Intro_Player.gd" id="4_adjqf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hul12"]
+radius = 16.0
+
+[node name="cutScene_Player" type="Node2D"]
+
+[node name="GroundIndicator" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_2uyh4")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 1
+color = Color(0, 0.64923394, 0.6492339, 1)
+energy = 0.3
+shadow_enabled = true
+texture = ExtResource("2_r8jxf")
+texture_scale = 1.5
+height = 1.0
+script = ExtResource("3_typva")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_adjqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_hul12")

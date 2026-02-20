@@ -4,6 +4,7 @@ extends Node2D
 @export var video_player : NodePath
 @export var pause_menu: NodePath
 @export var player_node: NodePath
+@export var num_of_games_label: NodePath   
 
 
 func _ready() -> void:
@@ -13,6 +14,8 @@ func _ready() -> void:
 		GameManager.register_video_player(get_node(video_player))
 		GameManager.register_pause_menu(get_node(pause_menu))
 		GameManager.register_player(get_node(player_node))
+		GameManager.register_num_of_games_label(get_node(num_of_games_label))
+
 
 	else:
 		print_debug("Something went wrong in initialize_main_menu")

@@ -172,3 +172,5 @@ func reset_game():
 
 func won():
 	print_debug("player won guess_the_cup_game")
+	GameManager.guess_cup_complete = true
+	GameManager.update_game_tracking()

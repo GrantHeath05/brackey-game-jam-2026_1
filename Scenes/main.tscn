@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://dtp8uinalalc8"]
 
 [ext_resource type="Script" uid="uid://c20vjneb41mdf" path="res://Scenes/initialize_main.gd" id="1_rm7pj"]
-[ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="2_fowyp"]
+[ext_resource type="PackedScene" uid="uid://bur4qpfukh4dy" path="res://Scenes/cut_scene_player.tscn" id="2_hptm8"]
 [ext_resource type="PackedScene" uid="uid://brvmxklahrka5" path="res://Scenes/ui.tscn" id="3_dex5k"]
 [ext_resource type="PackedScene" uid="uid://cw7y1khrar6t2" path="res://Scenes/tic_tac_toe.tscn" id="4_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://du5df47uvaw3p" path="res://Scenes/guess_the_cup_game.tscn" id="5_i6w5u"]
@@ -204,18 +204,11 @@ fade = NodePath("UI/Fade_&_Video_Player")
 video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
 pause_menu = NodePath("UI/PauseMenu")
 player_node = NodePath("Player")
-
-[node name="Indicator" parent="." instance=ExtResource("2_fowyp")]
-position = Vector2(-58, 144)
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-position = Vector2(114, -11)
-color = Color(0.3254902, 0.3254902, 0.3254902, 1)
+num_of_games_label = NodePath("UI/Number-of-Games-Label")
 
 [node name="UI" parent="." instance=ExtResource("3_dex5k")]
 
-[node name="Fade_&_Video_Player" parent="UI" index="1"]
+[node name="Fade_&_Video_Player" parent="UI" index="2"]
 z_index = 5
 
 [node name="FadeRect" parent="UI/Fade_&_Video_Player" index="2"]
@@ -229,6 +222,14 @@ visible = false
 
 [node name="Rock_Paper_Scissors-Minigame" parent="UI" instance=ExtResource("7_bmyws")]
 visible = false
+
+[node name="cutScene_Player" parent="." instance=ExtResource("2_hptm8")]
+position = Vector2(-92, 8)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+position = Vector2(114, -11)
+color = Color(0.3254902, 0.3254902, 0.3254902, 1)
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -244,7 +245,7 @@ tile_set = SubResource("TileSet_21xkr")
 tile_map_data = PackedByteArray("AAAbAAcAAQAAAAAAAAAcAAcAAQABAAAAAAAbAP//AQAAAAEAAAAbAAAAAQAAAAIAAAAcAP//AQABAAEAAAAcAAAAAQABAAIAAAAbAAgAAQAAAAEAAAAbAAkAAQAAAAIAAAAcAAgAAQABAAEAAAAcAAkAAQABAAIAAAAdAAYAAQAAAAAAAAAdAAcAAQAAAAEAAAAdAAgAAQAAAAIAAAAdAAkAAQAAAAMAAAAbAP7/AQAAAAAAAAAcAP7/AQABAAAAAAAdAP3/AQAAAAAAAAAdAP7/AQAAAAEAAAAdAP//AQAAAAIAAAAeAP3/AQABAAAAAAAeAP7/AQABAAEAAAAeAP//AQABAAIAAAAeAAkAAQABAAMAAAAeAAgAAQABAAIAAAAeAAcAAQABAAEAAAAeAAYAAQABAAAAAAAdAAAAAQAAAAMAAAAeAAAAAQABAAMAAAAbABAAAQAAAAAAAAAbABEAAQAAAAEAAAAbABIAAQAAAAIAAAAcABAAAQABAAAAAAAcABEAAQABAAEAAAAcABIAAQABAAIAAAAdAA8AAQAAAAAAAAAdABAAAQAAAAEAAAAdABEAAQAAAAIAAAAeAA8AAQABAAAAAAAeABAAAQABAAEAAAAeABEAAQABAAIAAAAdABIAAQAAAAMAAAAeABIAAQABAAMAAAAfAP3/AQAEAAEAAAAfAP7/AQAEAAIAAAAfAP//AQAEAAMAAAAgAP3/AQAFAAEAAAAgAP7/AQAFAAIAAAAgAP//AQAFAAMAAAAfAAYAAQAEAAEAAAAfAAcAAQAEAAIAAAAfAAgAAQAEAAMAAAAgAAYAAQAFAAEAAAAgAAcAAQAFAAIAAAAgAAgAAQAFAAMAAAAfAA8AAQAEAAEAAAAfABAAAQAEAAIAAAAfABEAAQAEAAMAAAAgAA8AAQAFAAEAAAAgABAAAQAFAAIAAAAgABEAAQAFAAMAAAA=")
 tile_set = SubResource("TileSet_21xkr")
 
-[node name="Player" parent="." instance=ExtResource("10_3q0qt")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("10_3q0qt")]
 
 [node name="CollisionShape2D" parent="Player" index="2"]
 shape = SubResource("CapsuleShape2D_kry3j")
@@ -262,9 +263,11 @@ destination_door_tag = "upper_1"
 position = Vector2(138.00171, 0)
 
 [editable path="UI"]
+[editable path="UI/Number-of-Games-Label"]
 [editable path="UI/PauseMenu"]
 [editable path="UI/PauseMenu/InputSettings"]
 [editable path="UI/TicTacToe"]
 [editable path="UI/Rock_Paper_Scissors-Minigame"]
+[editable path="cutScene_Player"]
 [editable path="Player"]
 [editable path="Doorways/lower_floor_1"]

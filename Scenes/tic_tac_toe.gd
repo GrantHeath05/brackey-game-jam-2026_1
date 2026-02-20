@@ -170,3 +170,5 @@ func _on_restart_button_pressed():
 
 func won():
     print_debug("Player won tic tac toe")
+    GameManager.tictactoe_complete = true
+    GameManager.update_game_tracking()

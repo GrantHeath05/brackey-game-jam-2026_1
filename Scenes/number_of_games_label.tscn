@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bs8684n2nusas"]
+
+[node name="Number-of-Games-Label" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 52
+text = "0/3"

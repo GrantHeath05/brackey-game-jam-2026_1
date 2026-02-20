@@ -200,6 +200,7 @@ fade = NodePath("UI/Fade_&_Video_Player")
 video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
 pause_menu = NodePath("UI/PauseMenu")
 player_node = NodePath("Player")
+num_of_games_label = NodePath("UI/Number-of-Games-Label")
 
 [node name="UI" parent="." instance=ExtResource("2_f7a0d")]
 
@@ -227,6 +228,7 @@ position = Vector2(-17, 5)
 [node name="Player" parent="." instance=ExtResource("6_krh42")]
 
 [editable path="UI"]
+[editable path="UI/Number-of-Games-Label"]
 [editable path="UI/PauseMenu"]
 [editable path="UI/PauseMenu/InputSettings"]
 [editable path="Doorways/upper_floor_1"]
