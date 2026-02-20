@@ -37,13 +37,13 @@ func _process(_delta):
 	tween2.tween_property(node2,"position", offset2, 1.0)
 
 func _on_quit_pressed() -> void:
-	print_debug("Quit was pressed")
+	# print_debug("Quit was pressed")
 	get_tree().quit()
 
 
 
 func _on_settings_pressed() -> void:
-	print_debug("Settings was pressed")
+	# print_debug("Settings was pressed")
 	GameManager.pause_game()
 
 func _on_start_pressed() -> void:
@@ -58,7 +58,7 @@ func _on_start_pressed() -> void:
 
 func _on_fade_timer_timeout() -> void:
 	if button_type == "start" :
-		print_debug("Start has been pressed")
+		# print_debug("Start has been pressed")
 		GameManager.clear_scene_references()
 		GameManager.load_scene_with_fade(load(main_route))
-		print_debug('Attempting to load:', main_route)
+		# print_debug('Attempting to load:', main_route)

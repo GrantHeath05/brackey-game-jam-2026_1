@@ -1,11 +1,11 @@
 [gd_resource type="AnimatedTexture" load_steps=11 format=3 uid="uid://di31a33lunfcq"]
 
-[ext_resource type="Texture2D" uid="uid://cv2lqflp2wgws" path="res://Sprites/light_sprites/light-1.png" id="1_v564a"]
-[ext_resource type="Texture2D" uid="uid://d2bajmo4jpyyi" path="res://Sprites/light_sprites/light-2.png" id="2_5uoca"]
-[ext_resource type="Texture2D" uid="uid://c68bkwmby2k2w" path="res://Sprites/light_sprites/light-3.png" id="3_lmsqt"]
-[ext_resource type="Texture2D" uid="uid://bmh43iycamfp4" path="res://Sprites/light_sprites/light-4.png" id="4_bbyi3"]
-[ext_resource type="Texture2D" uid="uid://bqmdf3mhpbbh8" path="res://Sprites/light_sprites/light-5.png" id="5_saea2"]
-[ext_resource type="Texture2D" uid="uid://mes71pxn4m8b" path="res://Sprites/light_sprites/light-6.png" id="6_ibgbh"]
+[ext_resource type="Texture2D" uid="uid://cv2lqflp2wgws" path="res://Sprites/light_sprites/animation_test/light-1.png" id="1_v564a"]
+[ext_resource type="Texture2D" uid="uid://d2bajmo4jpyyi" path="res://Sprites/light_sprites/animation_test/light-2.png" id="2_5uoca"]
+[ext_resource type="Texture2D" uid="uid://c68bkwmby2k2w" path="res://Sprites/light_sprites/animation_test/light-3.png" id="3_lmsqt"]
+[ext_resource type="Texture2D" uid="uid://bmh43iycamfp4" path="res://Sprites/light_sprites/animation_test/light-4.png" id="4_bbyi3"]
+[ext_resource type="Texture2D" uid="uid://bqmdf3mhpbbh8" path="res://Sprites/light_sprites/animation_test/light-5.png" id="5_saea2"]
+[ext_resource type="Texture2D" uid="uid://mes71pxn4m8b" path="res://Sprites/light_sprites/animation_test/light-6.png" id="6_ibgbh"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uhysd"]
 load_path = "res://.godot/imported/light-7.png-e5aff81c8e049ca4a21a1531de67e58b.ctex"

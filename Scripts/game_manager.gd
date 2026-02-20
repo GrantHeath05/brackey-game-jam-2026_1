@@ -1,67 +1,71 @@
 extends Node2D
 # The goal with this script is one general place for all game related 
-# functions to avoid needing to link multiple places
-
+# functions, which manage the entire gameplay loop.
+# This is a global script for every scene.
+#**********************
+# Player Varibles
 var Player
+var is_dark: bool = false
 
+# 
 #**********************
 # Pause Menu
 var pause_menu
-
+# 
 #**********************
 # Fade Varibles
 var fade_rect_controller
-
-
+# 
 #**********************
 #  Cutscene Varibles
 var scene_player
 var in_cutscene: bool = false
-
-
+# 
 #**********************
 #  Door Varibles
 const lower_1 = preload("res://Scenes/main.tscn")
 const upper_1 = preload("res://Scenes/upper_floor.tscn")
 var spawn_door_tag
-
 signal on_trigger_player_spawn
-#**********************
 
+
+# pause the game and open pause menu
 func pause_game():
 	pause_menu.pause()
 
+# clear scene references for switching scenes
 func clear_scene_references():
 	pause_menu = null
 	fade_rect_controller = null
 	scene_player = null
 
+# initialize scene (unfading from black)
 func initialize_scene():
 	# print_debug("Everything should be hidden")
-	print_debug("Initilizing scene")
+	# print_debug("Initilizing scene")
 	fade_from_black()
 	pause_menu.resume()
 	# print_debug("Everything should be hidden")
-	pause_menu.edit_objective_txt("test")
 
+# register function for player script to register(self)
 func register_pause_menu(node):
 	pause_menu = node
 	# print_debug("initilized: ", node)
 
+# register function for player script to register(self)
 func register_player(node):
 	Player = node
 	# print_debug("initilized: ", node)
 
-#  Lets other functions register themselves with game manager
+# register function for player script to register(self)
 func register_video_player(node):
 	scene_player = node
 	# print_debug("initilized: ", node)
 
-#  Lets other functions register themselves with game manager
+# register function for player script to register(self)
 func register_fade_rect(node):
 	fade_rect_controller = node
 	# print_debug("initilized: ", node)
-
 
 # input file name as a parameter. function just runs sceneplayer.play_cutscene, handles errors here thogh
 func play_video(filename: String)->void:
@@ -72,7 +76,7 @@ func play_video(filename: String)->void:
 			print_debug("ERROR: loading fade_rect_controller_node")
 			return
 
-		set_cutscene_flag(true)
+		in_cutscene = true
 		# get_tree().paused = true
 		show_video()
 
@@ -84,9 +88,7 @@ func play_video(filename: String)->void:
 
 		await fade_from_black()
 
-		set_cutscene_flag(false)
-
-
+		in_cutscene = false
 
 # These functions are garbage they just link to UI_Roots functions
 func fade_to_black() -> void:
@@ -100,22 +102,19 @@ func fade_from_black() -> void:
 		await fade_rect_controller.fade_out()
 		fade_rect_controller.visible = false
 
+# Hide video screen
 func hide_video ()->void:
 	if scene_player:
 		scene_player.stop()
 		scene_player.visible = false
 
+# Unhide video screen
 func show_video()->void:
 	if scene_player:
 		scene_player.stop()
 		scene_player.visible = true
-	
-func set_cutscene_flag(flag: bool)->void:
-	in_cutscene = flag
-	
-func get_cutscene_flag()->bool:
-	return in_cutscene
 
+# Transfers player to level using parameters level_tag and destination_tag. mainly used for doors
 func go_to_level(level_tag, destination_tag) -> void:
 	# Fade out old scene
 	if fade_rect_controller:
@@ -147,11 +146,25 @@ func go_to_level(level_tag, destination_tag) -> void:
 		await fade_rect_controller.fade_out()
 		fade_rect_controller.visible = false
 
-
-
+# player spawn trigger for doors
 func trigger_player_spawn(PlayerPosition: Vector2, direction: String):
 	on_trigger_player_spawn.emit(PlayerPosition, direction)
 
+# turn off players light effect if it exists
+func turn_off_player_light():
+	if Player:
+		var light = Player.get_node("PointLight2D")
+		if light:
+			light.visible = false
+
+# turn on players light effect if it exists
+func turn_on_player_light():
+	if Player:
+		var light = Player.get_node("PointLight2D")
+		if light:
+			light.visible = true
+
+# load new scene with fade effect
 func load_scene_with_fade(scene: PackedScene):
 	# 1. Fade to black using the OLD fade rect
 	if fade_rect_controller:
@@ -167,16 +180,19 @@ func load_scene_with_fade(scene: PackedScene):
 	# 3. Change scene
 	get_tree().change_scene_to_packed(scene)
 
-	print_debug("wait for new scene to process")
+	# print_debug("wait for new scene to process")
 	# 4. Wait one frame so the new scene can run _ready()
 	await get_tree().process_frame
 
 	# 5. Now the new scene should have registered its UI
 	#    Fade from black using the NEW fade rect
 	if fade_rect_controller:
-		print_debug("new fade controller found")
+		# print_debug("new fade controller found")
 		await fade_rect_controller.fade_out()
 		fade_rect_controller.visible = false
-		print_debug("new fade controller found")
 	if pause_menu:
 		pause_menu.resume()
+
+# updates objective tag using a String parameter called 'tag'
+func update_objective_tag(tag: String):
+	pause_menu.edit_objective_txt(tag)

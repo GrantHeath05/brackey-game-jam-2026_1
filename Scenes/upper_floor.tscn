@@ -203,15 +203,6 @@ player_node = NodePath("Player")
 
 [node name="UI" parent="." instance=ExtResource("2_f7a0d")]
 
-[node name="PauseMenu" parent="UI" index="0"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="Ground" type="TileMapLayer" parent="TileMap"]
