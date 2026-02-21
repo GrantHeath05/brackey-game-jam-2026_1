@@ -141,6 +141,46 @@ texture = ExtResource("8_55r8r")
 9:2/0 = 0
 8:2/0 = 0
 8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:11/0 = 0
+10:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.4749146, -8, 5.935337, -8, 4.7717, -2.3350878, -5.177803, -2.436613)
+10:10/0 = 0
+10:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.6187286, 6.497635, -0.91372967, 5.786955, 8, -6.903738, 8)
+11:11/0 = 0
+11:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 6.115196, -0.35971642, -6.2950554, -0.35971642)
+11:10/0 = 0
+11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.136751, 5.036045, 3.057598, 4.6763268, 8, 8, -8, 8)
+13:11/0 = 0
+13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3.2488174, -8, -3.2374563)
+14:11/0 = 0
+14:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -3.2488174, -8, -3.2374563)
+15:11/0 = 0
+15:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 3.2374573, -8, 2.9442406, -3.2488174, -8, -3.2374563)
+15:10/0 = 0
+15:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.2590103, 3.2374573, -1.4388695, 3.057598, 8, -8, 8)
+14:10/0 = 0
+14:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.7985859, 8, -1.6187286, 8, 8, -8, 8)
+13:10/0 = 0
+13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1.7985859, 8, -1.6187286, 8, 8, -8, 8)
+12:10/0 = 0
+12:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -1.4388695, 8, -1.6187286, 8, 8, 0, 8)
+12:11/0 = 0
+12:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.17985916, -8, 8, -8, 8, -3.2488174, 0.10152531, -3.1472921)
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+7:7/0 = 0
+6:7/0 = 0
+5:7/0 = 0
+4:7/0 = 0
+3:7/0 = 0
+2:7/0 = 0
+1:7/0 = 0
+0:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkdf5"]
 texture = ExtResource("9_3yc31")
@@ -246,6 +286,9 @@ tile_set = SubResource("TileSet_21xkr")
 position = Vector2(110, -14)
 
 [node name="Player" parent="." instance=ExtResource("10_3q0qt")]
+
+[node name="Sprite2D" parent="Player" index="0"]
+scale = Vector2(0.8, 0.8)
 
 [node name="CollisionShape2D" parent="Player" index="2"]
 shape = SubResource("CapsuleShape2D_kry3j")
