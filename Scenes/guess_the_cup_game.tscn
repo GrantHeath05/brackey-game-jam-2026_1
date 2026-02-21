@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://du5df47uvaw3p"]
 
-[ext_resource type="Script" uid="uid://nn2017dyllw6" path="res://Scripts/Min_games/guess_the_cup_game.gd" id="1_xeart"]
+[ext_resource type="Script" uid="uid://nn2017dyllw6" path="res://Scripts/Mini_games/guess_the_cup_game.gd" id="1_xeart"]
 [ext_resource type="Texture2D" uid="uid://bm8kupqrye22l" path="res://Sprites/mini_game_sprites/prototype_cup.png" id="2_4n6jk"]
 [ext_resource type="Texture2D" uid="uid://df0327g51pxjk" path="res://Sprites/icon.svg" id="3_3gavu"]
 [ext_resource type="FontFile" uid="uid://c8ksa7vqufkyy" path="res://fonts/PlaywriteNZBasic-ExtraLight.ttf" id="4_tpln3"]
