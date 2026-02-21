@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dtp8uinalalc8"]
+[gd_scene load_steps=19 format=4 uid="uid://dtp8uinalalc8"]
 
 [ext_resource type="Script" uid="uid://c20vjneb41mdf" path="res://Scenes/initialize_main.gd" id="1_rm7pj"]
 [ext_resource type="PackedScene" uid="uid://bur4qpfukh4dy" path="res://Scenes/cut_scene_player.tscn" id="2_hptm8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://coh4pooc45tb" path="res://Scenes/rock_paper_scissors_minigame.tscn" id="7_bmyws"]
 [ext_resource type="Texture2D" uid="uid://brmmp08wy3kii" path="res://Sprites/tilesets/BGJ_tilemap_1.png" id="8_55r8r"]
 [ext_resource type="Texture2D" uid="uid://cyc4xfbul27lx" path="res://Sprites/tilesets/BGJ_stairs_tilemap.png" id="9_3yc31"]
+[ext_resource type="Texture2D" uid="uid://eahnhwjgp548" path="res://Sprites/tilesets/train and debris.png" id="9_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://b1ass8dr4qiol" path="res://Scenes/player.tscn" id="10_3q0qt"]
 [ext_resource type="PackedScene" uid="uid://cbiafhg1xttjr" path="res://Scenes/Interactable_Monster_Scene/tic_tac_toe_monster.tscn" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dqmkybjm1rpdy" path="res://Scenes/Interactable_Monster_Scene/rps_monster.tscn" id="12_6iyac"]
@@ -231,10 +232,111 @@ texture = ExtResource("9_3yc31")
 6:3/0 = 0
 7:3/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wsu2k"]
+texture = ExtResource("9_fdnlq")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+12:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.71943474, 3.7770348, 5.75548, 8, -8, 8)
+14:14/0 = 0
+15:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+11:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.935337, -8, 8, -8, 8, -1.4388695, 3.2374573, -3.7770329)
+12:15/0 = 0
+12:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 2.1583042, -3.4173155, -1.7985878, -3.7770329, -8, -1.0791512)
+13:15/0 = 0
+13:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.935337, 0.8992939, -0.35971642, -8, -1.6187286)
+14:15/0 = 0
+15:15/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_21xkr"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_fdnlq")
 sources/1 = SubResource("TileSetAtlasSource_jkdf5")
+sources/2 = SubResource("TileSetAtlasSource_wsu2k")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kry3j"]
 radius = 5.0
@@ -284,6 +386,7 @@ tile_map_data = PackedByteArray("AAAbAAcAAQAAAAAAAAAcAAcAAQABAAAAAAAbAP//AQAAAAE
 tile_set = SubResource("TileSet_21xkr")
 
 [node name="post_cutscene_debris" type="TileMapLayer" parent="TileMapLayers"]
+tile_map_data = PackedByteArray("AAAaAAoAAgANAAoAAAAaAAsAAgANAAsAAAAbAAoAAgAOAAoAAAAbAAsAAgAOAAsAAAAcAAoAAgAPAAoAAAAcAAsAAgAPAAsAAAAHAAoAAgAPAAgAAAALAAkAAgAPAAkAAAAQAAAAAgAMAAgAAAAQAAEAAgAMAAkAAAARAAAAAgANAAgAAAARAAEAAgANAAkAAAASAAAAAgAOAAgAAAASAAEAAgAOAAkAAAATAAAAAgAPAAkAAAAQAP//AgAPAAgAAAD7/xEAAgANAAoAAAD7/xIAAgANAAsAAAD8/xEAAgAOAAoAAAD8/xIAAgAOAAsAAAD9/xEAAgAPAAoAAAD9/xIAAgAPAAsAAAAEAAYAAgAPAAgAAAAEAAcAAgAMAAkAAAAFAAYAAgANAAgAAAAFAAcAAgAOAA0AAAAGAAYAAgAOAAgAAAAGAAcAAgAPAA0AAAD6/wgAAgAPAAgAAAASABMAAgAPAA8AAAATABMAAgANAAgAAAAUABMAAgAOAAgAAAAVABIAAgAPAAgAAAAbABMAAgAPAAkAAAARAP//AgAOAA8AAAASAP//AgAPAA8AAAAWAAAAAgALAA4AAAAWAAEAAgALAA8AAAAXAAAAAgAMAA4AAAAXAAEAAgAMAA8AAAAYAAEAAgANAA8AAAAFAAgAAgAOAA4AAAAGAAgAAgAPAA4AAAASAAkAAgAOAA0AAAASAAoAAgAOAA4AAAATAAkAAgAPAA0AAAATAAoAAgAPAA4AAAAZAAcAAgAOAA8AAAAaAAcAAgAPAA8AAAD6/wkAAgALAA4AAAD6/woAAgALAA8AAAD7/wkAAgAMAA4AAAD7/woAAgAMAA8AAAD8/woAAgANAA8AAAAPABEAAgALAA4AAAAPABIAAgALAA8AAAAQABEAAgAMAA4AAAAQABIAAgAMAA8AAAARABIAAgANAA8AAAANABIAAgAOAA0AAAANABMAAgAOAA4AAAAOABIAAgAPAA0AAAAOABMAAgAPAA4AAAARABMAAgAOAA8AAAAWABEAAgAOAA8AAAAXABEAAgAPAA8AAAAAAPv/AgADAAAAAAABAPv/AgAEAAAAAAAFAPv/AgAAAAAAAAAFAPz/AgAAAAEAAAAGAPv/AgABAAAAAAAGAPz/AgABAAEAAAAGAP3/AgABAAIAAAAEAPv/AgACAAAAAAAEAPz/AgACAAEAAAAEAP3/AgACAAIAAAD6//v/AgACAAAAAAD6//z/AgACAAEAAAD6//3/AgACAAIAAAANAPv/AgACAAAAAAANAPz/AgACAAEAAAANAP3/AgACAAIAAAAIAPr/AgADAAAAAAAIAPv/AgADAAEAAAAIAPz/AgADAAIAAAAIAP3/AgADAAMAAAAJAPr/AgAEAAAAAAAQAPv/AgADAAAAAAAQAPz/AgADAAEAAAAQAP3/AgADAAIAAAAQAP7/AgADAAMAAAARAPv/AgAEAAAAAAATAP3/AgACAAIAAAAfAPj/AgACAAAAAAAfAPn/AgACAAEAAAAfAPr/AgACAAIAAAATAPr/AgACAAAAAAATAPv/AgACAAEAAAATAPz/AgACAAIAAAAYAPn/AgAAAAAAAAAYAPr/AgAAAAEAAAAZAPn/AgABAAAAAAAZAPr/AgABAAEAAAAZAPv/AgABAAIAAAA=")
 tile_set = SubResource("TileSet_21xkr")
 
 [node name="tic_tac_toe_monster" parent="." instance=ExtResource("11_d1ilt")]
@@ -296,6 +399,12 @@ scale = Vector2(0.8, 0.8)
 
 [node name="CollisionShape2D" parent="Player" index="2"]
 shape = SubResource("CapsuleShape2D_kry3j")
+
+[node name="TileMapLayersFront" type="Node2D" parent="."]
+
+[node name="front_debris" type="TileMapLayer" parent="TileMapLayersFront"]
+tile_map_data = PackedByteArray("AAD5/wEAAgAAAAsAAAD5/wIAAgAAAAwAAAD5/wMAAgAAAA0AAAD5/wQAAgAAAA4AAAD5/wUAAgAAAA8AAAD6/wEAAgABAAsAAAD6/wIAAgABAAwAAAD6/wMAAgABAA0AAAD6/wQAAgABAA4AAAD6/wUAAgABAA8AAAD7/wEAAgACAAsAAAD7/wIAAgACAAwAAAD7/wMAAgACAA0AAAD7/wQAAgACAA4AAAD7/wUAAgACAA8AAAD8/wEAAgADAAsAAAD8/wIAAgADAAwAAAD8/wMAAgADAA0AAAD8/wQAAgADAA4AAAD8/wUAAgADAA8AAAD9/wEAAgAEAAsAAAD9/wIAAgAEAAwAAAD9/wMAAgAEAA0AAAD9/wQAAgAEAA4AAAD9/wUAAgAEAA8AAAD+/wEAAgAFAAsAAAD+/wIAAgAFAAwAAAD+/wMAAgAFAA0AAAD+/wQAAgAFAA4AAAD+/wUAAgAFAA8AAAD//wEAAgAGAAsAAAD//wIAAgAGAAwAAAD//wMAAgAGAA0AAAD//wQAAgAGAA4AAAD//wUAAgAGAA8AAAAAAAEAAgAHAAsAAAAAAAIAAgAHAAwAAAAAAAMAAgAHAA0AAAAAAAQAAgAHAA4AAAAAAAUAAgAHAA8AAAABAAEAAgAIAAsAAAABAAIAAgAIAAwAAAABAAMAAgAIAA0AAAABAAQAAgAIAA4AAAABAAUAAgAIAA8AAAACAAEAAgAJAAsAAAACAAIAAgAJAAwAAAACAAMAAgAJAA0AAAACAAQAAgAJAA4AAAACAAUAAgAJAA8AAAADAAEAAgAKAAsAAAADAAIAAgAKAAwAAAADAAMAAgAKAA0AAAADAAQAAgAKAA4AAAADAAUAAgAKAA8AAAA=")
+tile_set = SubResource("TileSet_21xkr")
 
 [node name="Doorways" type="Node" parent="."]
 
