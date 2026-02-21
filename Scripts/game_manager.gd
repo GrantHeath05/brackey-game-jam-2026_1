@@ -6,6 +6,8 @@ extends Node2D
 # Player Varibles
 var Player
 var is_dark: bool = false
+
+var after_intro = false
 # 
 #**********************
 # Top left label for number of games
@@ -42,9 +44,45 @@ var rock_paper_scissors
 var tictactoe
 var cup_game
 
+var lighting
+
+var debris
+
+func hide_debris():
+	pass
+	# if debris:
+	# 	debris.visible = false
+	# 	debris.collision_layer = 0
+	# 	debris.collision_mask = 0
+
+func show_debris():
+	pass
+	# if debris:
+	# 	debris.visible = true
+	# 	debris.collision_layer = 1
+	# 	debris.collision_mask = 1
+
+
+
+func _process(_delta: float) -> void:
+	if after_intro:
+		show_debris()
+		if lighting:
+			lighting.visible = true
+	else:
+		hide_debris()
+		if lighting:
+			lighting.visible = false
+		
+
+ 
+
+
+
 # update tracking label and varibles
 func update_game_tracking():
-	num_of_games_label.update_game_tracker_label()
+	if num_of_games_label:
+		num_of_games_label.update_game_tracker_label()
 
 # pause the game and open pause menu
 func pause_game():
@@ -65,7 +103,11 @@ func initialize_scene():
 	update_game_tracking()
 
 	# print_debug("Everything should be hidden")
+func register_debris(node):
+	debris = node
 
+func register_lighting(node):
+	lighting = node
 func register_num_of_games_label(node):
 	num_of_games_label = node
 

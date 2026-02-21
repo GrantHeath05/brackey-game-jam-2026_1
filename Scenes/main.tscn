@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://dtp8uinalalc8"]
+[gd_scene load_steps=20 format=4 uid="uid://dtp8uinalalc8"]
 
 [ext_resource type="Script" uid="uid://c20vjneb41mdf" path="res://Scenes/initialize_main.gd" id="1_rm7pj"]
 [ext_resource type="PackedScene" uid="uid://bur4qpfukh4dy" path="res://Scenes/cut_scene_player.tscn" id="2_hptm8"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cbiafhg1xttjr" path="res://Scenes/Interactable_Monster_Scene/tic_tac_toe_monster.tscn" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://dqmkybjm1rpdy" path="res://Scenes/Interactable_Monster_Scene/rps_monster.tscn" id="12_6iyac"]
 [ext_resource type="PackedScene" uid="uid://36k6sqknkdsn" path="res://Scenes/doorway.tscn" id="13_6m82u"]
+[ext_resource type="PackedScene" uid="uid://bc1gprgrliy2i" path="res://Scenes/Interactable_Monster_Scene/main_monster.tscn" id="14_jkdf5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdnlq"]
 texture = ExtResource("8_55r8r")
@@ -349,8 +350,11 @@ video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
 pause_menu = NodePath("UI/PauseMenu")
 player_node = NodePath("Player")
 num_of_games_label = NodePath("UI/Number-of-Games-Label")
+lighting = NodePath("Lighting")
+debris_tilemap = NodePath("TileMapLayers/post_cutscene_debris")
 
 [node name="UI" parent="." instance=ExtResource("3_dex5k")]
+visible = false
 
 [node name="Fade_&_Video_Player" parent="UI" index="2"]
 z_index = 5
@@ -365,11 +369,10 @@ visible = false
 [node name="Rock_Paper_Scissors-Minigame" parent="UI" instance=ExtResource("7_bmyws")]
 visible = false
 
-[node name="cutScene_Player" parent="." instance=ExtResource("2_hptm8")]
-position = Vector2(-92, 8)
+[node name="Lighting" parent="." instance=ExtResource("7_6iyac")]
 
-[node name="CanvasModulate" parent="." instance=ExtResource("7_6iyac")]
-position = Vector2(114, -11)
+[node name="cutScene_Player" parent="." instance=ExtResource("2_hptm8")]
+position = Vector2(36, 158)
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -390,7 +393,7 @@ tile_map_data = PackedByteArray("AAAaAAoAAgANAAoAAAAaAAsAAgANAAsAAAAbAAoAAgAOAAo
 tile_set = SubResource("TileSet_21xkr")
 
 [node name="tic_tac_toe_monster" parent="." instance=ExtResource("11_d1ilt")]
-position = Vector2(318, 118)
+position = Vector2(141, -14)
 
 [node name="Player" parent="." instance=ExtResource("10_3q0qt")]
 
@@ -440,6 +443,9 @@ position = Vector2(119.18332, 3.6274557)
 
 [node name="RPS_Monster" parent="." instance=ExtResource("12_6iyac")]
 position = Vector2(42, 280)
+
+[node name="Main_Monster" parent="." instance=ExtResource("14_jkdf5")]
+position = Vector2(34, 121)
 
 [editable path="UI"]
 [editable path="UI/Number-of-Games-Label"]

@@ -12,4 +12,5 @@ func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		await GameManager.play_video("godot_ogg_test")
 		has_played = true
+		GameManager.after_intro = true
 		get_parent().hide()

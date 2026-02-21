@@ -221,6 +221,7 @@ video_player = NodePath("UI/Fade_&_Video_Player/VideoContainer/video_player")
 pause_menu = NodePath("UI/PauseMenu")
 player_node = NodePath("Player")
 num_of_games_label = NodePath("UI/Number-of-Games-Label")
+lighting = NodePath("Lighting")
 
 [node name="UI" parent="." instance=ExtResource("2_f7a0d")]
 

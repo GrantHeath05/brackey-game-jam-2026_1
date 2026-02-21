@@ -5,16 +5,19 @@ extends Node2D
 @export var pause_menu: NodePath
 @export var player_node: NodePath
 @export var num_of_games_label: NodePath   
+@export var lighting: NodePath   
 
 
 func _ready() -> void:
 	# Register UI components with GameManager
-	if fade and video_player and pause_menu:
+	if fade and video_player and pause_menu and lighting and num_of_games_label:
 		GameManager.register_fade_rect(get_node(fade))
 		GameManager.register_video_player(get_node(video_player))
 		GameManager.register_pause_menu(get_node(pause_menu))
 		GameManager.register_player(get_node(player_node))
 		GameManager.register_num_of_games_label(get_node(num_of_games_label))
+		GameManager.register_lighting(get_node(lighting))
+
 
 
 	else:

@@ -5,15 +5,21 @@ extends Node2D
 @export var pause_menu: NodePath
 @export var player_node: NodePath   
 @export var num_of_games_label: NodePath   
+@export var lighting: NodePath
+@export var debris_tilemap: NodePath
 
 
 func _ready() -> void:
-	if fade and video_player and pause_menu and player_node and num_of_games_label:
+	if fade and video_player and pause_menu and player_node and num_of_games_label and lighting and debris_tilemap:
 		GameManager.register_fade_rect(get_node(fade))
 		GameManager.register_video_player(get_node(video_player))
 		GameManager.register_pause_menu(get_node(pause_menu))
 		GameManager.register_player(get_node(player_node))
 		GameManager.register_num_of_games_label(get_node(num_of_games_label))
+		GameManager.register_lighting(get_node(lighting))
+		GameManager.register_debris(get_node(debris_tilemap))
+
+
 	else:
 		print_debug("Something went wrong in initialize_main_menu")
 		return

@@ -22,6 +22,10 @@ func _on_body_exited(body):
 
 
 func _process(_delta):
+	if GameManager.guess_cup_complete:
+		$Indicator.visible = false
+	else:
+		$Indicator.visible = true
 	if player_in_range:
 		if Input.is_action_just_pressed("Interact"):
 			print("Player interacted with NPC!")

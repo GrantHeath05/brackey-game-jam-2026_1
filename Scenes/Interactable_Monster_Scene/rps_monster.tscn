@@ -15,9 +15,6 @@ script = ExtResource("1_ij4gr")
 [node name="Indicator" parent="." instance=ExtResource("2_7opp1")]
 position = Vector2(2, 11)
 
-[node name="PointLight2D" parent="Indicator" index="1"]
-visible = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, 1)
 texture = ExtResource("3_ij4gr")
