@@ -1,6 +1,11 @@
 extends Node2D
 
+var voice_line = "will you be the X to my O."
+var monster_type = "TicTacToe"
+
 var player_in_range := false
+var waiting_for_prompt_close := false
+var textbox_open := false
 
 func _ready():
 	$Area2D.body_entered.connect(_on_body_entered)
@@ -9,26 +14,40 @@ func _ready():
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		player_in_range = true
-		print("Player is nearby (show interact prompt soon)")
+
+		# Small prompt (NO arguments)
 		$Control.show_interact_prompt()
+		waiting_for_prompt_close = true
 
 func _on_body_exited(body):
 	if body.is_in_group("Player"):
 		player_in_range = false
-		print("Player left interaction range (hide prompt)")
-		$Control.hide_interact_prompt()
+		waiting_for_prompt_close = false
+		textbox_open = false
 
+		$Control.hide_interact_prompt()
+		GameManager.hide_textbox()
 
 func _process(_delta):
-	if GameManager.tictactoe_complete:
-		$Indicator.visible = false
-	else:
-		$Indicator.visible = true
-	if player_in_range:
-		if Input.is_action_just_pressed("Interact"):
-			print("Player interacted with NPC!")
-			GameManager.show_tictactoe()
-		else:
-			$Control.show_interact_prompt()
+	$Indicator.visible = not GameManager.tictactoe_complete
 
-			pass
+	if not player_in_range:
+		return
+
+	# STEP 1: Close the small prompt
+	if waiting_for_prompt_close:
+		if Input.is_action_just_pressed("Interact"):
+			$Control.hide_interact_prompt()
+			waiting_for_prompt_close = false
+
+			GameManager.show_textbox(voice_line, monster_type)
+			textbox_open = true
+		return
+
+	# STEP 2: Close textbox and start game
+	if textbox_open:
+		if Input.is_action_just_pressed("Interact"):
+			GameManager.hide_textbox()
+			textbox_open = false
+			GameManager.show_tictactoe()
+		return

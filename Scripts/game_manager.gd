@@ -47,37 +47,79 @@ var cup_game
 var lighting
 
 var debris
+var front_debris
+
+var music_started := false
+var in_main_menu := true
+
+var textbox_ui
+# Monster nodes
+var main_monster
+var rps_monster
+var tictactoe_monster
+var cup_monster
+
+
+
+func register_textbox(node):
+	textbox_ui = node
+
+func show_textbox(text: String, monster: String):
+	if textbox_ui:
+		textbox_ui.show_interact_prompt(text, monster)
+
+func hide_textbox():
+	if textbox_ui:
+		textbox_ui.hide_interact_prompt()
 
 func hide_debris():
-	pass
-	# if debris:
-	# 	debris.visible = false
-	# 	debris.collision_layer = 0
-	# 	debris.collision_mask = 0
+	# pass
+	if debris and front_debris:
+		debris.visible = false
+		front_debris.visible = false
+
+		# debris.collision_layer = 0
+		# debris.collision_mask = 0
 
 func show_debris():
-	pass
-	# if debris:
-	# 	debris.visible = true
-	# 	debris.collision_layer = 1
-	# 	debris.collision_mask = 1
+	# pass
+	if debris and front_debris:
+		debris.visible = true
+		front_debris.visible = true
+		# debris.collision_layer = 1
+		# debris.collision_mask = 1
 
 
 
-func _process(_delta: float) -> void:
+func _process(_delta):
+	# MAIN MENU MUSIC
+	if in_main_menu:
+		if not music_started and $MusicPlayer:
+			music_started = true
+			$MusicPlayer.play()
+		return
+
+	# IN-GAME MUSIC (only after intro)
 	if after_intro:
+		if not music_started and $MusicPlayer:
+			music_started = true
+			$MusicPlayer.play()
+
 		show_debris()
 		if lighting:
 			lighting.visible = true
+			Player.turn_on_player_light()
+		show_all_monster()
+
 	else:
 		hide_debris()
+		hide_all_monster()
+
 		if lighting:
 			lighting.visible = false
-		
+			Player.turn_off_player_light()
 
- 
-
-
+	
 
 # update tracking label and varibles
 func update_game_tracking():
@@ -102,9 +144,44 @@ func initialize_scene():
 	pause_menu.resume()
 	update_game_tracking()
 
-	# print_debug("Everything should be hidden")
-func register_debris(node):
-	debris = node
+func hide_all_monster():
+	# print_debug("hiding monsters")
+	if main_monster:
+		main_monster.visible = false
+	if rps_monster:
+		tictactoe_monster.visible = false
+	if rps_monster:
+		rps_monster.visible = false
+	if cup_monster:
+		cup_monster.visible = false
+
+func show_all_monster():
+	if main_monster:
+		main_monster.visible = true
+	if rps_monster:
+		tictactoe_monster.visible = true
+	if rps_monster:
+		rps_monster.visible = true
+	if cup_monster:
+		cup_monster.visible = true
+
+
+func register_main_monster_nodes(temp_main_monster, temp_rps_monster, temp_tictactoe_monster):
+	main_monster = temp_main_monster
+	rps_monster = temp_rps_monster
+	tictactoe_monster = temp_tictactoe_monster
+
+
+
+func register_upper_monster_nodes(temp_cup_monster):
+	cup_monster = temp_cup_monster
+
+
+
+# print_debug("Everything should be hidden")
+func register_debris(debris_layer: TileMapLayer, front_debris_layer: TileMapLayer):
+	debris = debris_layer
+	front_debris = front_debris_layer
 
 func register_lighting(node):
 	lighting = node
@@ -161,6 +238,7 @@ func play_video(filename: String)->void:
 		scene_player.visible = true
 		scene_player.play_cutscene(filename)
 		await scene_player.finished
+		after_intro = true
 		hide_video()
 
 		await fade_from_black()

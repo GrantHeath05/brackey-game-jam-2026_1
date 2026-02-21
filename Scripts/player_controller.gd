@@ -6,6 +6,10 @@ class_name Player
 var players_input := Vector2.ZERO
 var last_direction := "down"   # Used for idle animations
 
+func turn_on_player_light():
+	$PointLight2D.visible = true
+func turn_off_player_light():
+	$PointLight2D.visible = false
 
 func _physics_process(_delta: float) -> void:
 

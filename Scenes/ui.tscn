@@ -64,12 +64,15 @@ _data = {
 layer = 5
 
 [node name="Number-of-Games-Label" parent="." instance=ExtResource("1_q7pk6")]
+visible = false
 script = ExtResource("2_m78vo")
 
 [node name="Label" parent="Number-of-Games-Label" index="0"]
+visible = false
 text = ""
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_nf4gj")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -90,6 +93,7 @@ visible = true
 visible = true
 
 [node name="Fade_&_Video_Player" type="Control" parent="."]
+visible = false
 layout_direction = 2
 layout_mode = 3
 anchors_preset = 15

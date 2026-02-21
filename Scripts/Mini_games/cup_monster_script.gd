@@ -1,35 +1,59 @@
 extends Node2D
 
+var voice_line = ". . pick. pick cup."
+var monster_type = "Cup"
 var player_in_range := false
+var textbox_open := false
 
 func _ready():
 	$Area2D.body_entered.connect(_on_body_entered)
 	$Area2D.body_exited.connect(_on_body_exited)
 
-
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		player_in_range = true
-		print("Player is nearby (show interact prompt soon)")
-		$Control.show_interact_prompt()
-
+		$Control.show_interact_prompt()   # small prompt above monster
 
 func _on_body_exited(body):
 	if body.is_in_group("Player"):
 		player_in_range = false
-		print("Player left interaction range (hide prompt)")
+		textbox_open = false
 		$Control.hide_interact_prompt()
 
+		# Run function here e.g.
+		# GameManager.hide_textbox()
+		GameManager.hide_textbox()
 
 func _process(_delta):
-	if GameManager.guess_cup_complete:
-		$Indicator.visible = false
-	else:
-		$Indicator.visible = true
-	if player_in_range:
+	$Indicator.visible = not GameManager.guess_cup_complete
+
+	if not player_in_range:
+		return
+
+	# If textbox is open, Interact should close it and start the game
+	if textbox_open:
 		if Input.is_action_just_pressed("Interact"):
-			print("Player interacted with NPC!")
+
+			# Run function here e.g.
+			# GameManager.hide_textbox()
+			GameManager.hide_textbox()
+
+			textbox_open = false
+
+			# Run function here e.g.
+			# GameManager.show_cup_game()
 			GameManager.show_cup_game()
-		else:
-			$Control.show_interact_prompt()
-			pass
+
+		return
+
+	# If textbox is NOT open, Interact should open it
+	if Input.is_action_just_pressed("Interact"):
+		$Control.hide_interact_prompt()   # hide small prompt
+
+		# Run function here e.g.
+		# GameManager.show_textbox("test", "Cup")
+		GameManager.show_textbox(voice_line, "Cup")
+
+		textbox_open = true
+	else:
+		$Control.show_interact_prompt()

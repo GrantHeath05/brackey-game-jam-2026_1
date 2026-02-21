@@ -7,17 +7,26 @@ extends Node2D
 @export var num_of_games_label: NodePath   
 @export var lighting: NodePath
 @export var debris_tilemap: NodePath
+@export var front_desbris_tilemap: NodePath
+
+@export var main_monster: NodePath
+@export var rps_monster: NodePath
+@export var tictactoe_monster: NodePath
+@export var textbox: NodePath
+
 
 
 func _ready() -> void:
-	if fade and video_player and pause_menu and player_node and num_of_games_label and lighting and debris_tilemap:
+	if fade and video_player and pause_menu and player_node and num_of_games_label and lighting and debris_tilemap and textbox:
 		GameManager.register_fade_rect(get_node(fade))
 		GameManager.register_video_player(get_node(video_player))
 		GameManager.register_pause_menu(get_node(pause_menu))
 		GameManager.register_player(get_node(player_node))
 		GameManager.register_num_of_games_label(get_node(num_of_games_label))
 		GameManager.register_lighting(get_node(lighting))
-		GameManager.register_debris(get_node(debris_tilemap))
+		GameManager.register_debris(get_node(debris_tilemap), get_node(front_desbris_tilemap))
+		GameManager.register_main_monster_nodes(get_node(main_monster), get_node(rps_monster), get_node(tictactoe_monster))
+		GameManager.register_textbox(get_node(textbox))
 
 
 	else:

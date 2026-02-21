@@ -49,12 +49,19 @@ func _on_settings_pressed() -> void:
 func _on_start_pressed() -> void:
 	#print_debug("Start has been pressed")
 	button_type = "start"
+
+	GameManager.in_main_menu = false
+	GameManager.after_intro = false
+	GameManager.music_started = false
+
+	if GameManager.has_node("MusicPlayer"):
+		GameManager.get_node("MusicPlayer").stop()
+
 	$fadeout.show()
 	$fadeout/fadeTimer.start()
 	$fadeout/AnimationPlayer.play("menu_fadein")
-	#GameManager.clear_scene_references()
-	#GameManager.load_scene_with_fade(load(main_route))
-	#print_debug('Attempting to load:', main_route)
+
+
 
 func _on_fade_timer_timeout() -> void:
 	if button_type == "start" :

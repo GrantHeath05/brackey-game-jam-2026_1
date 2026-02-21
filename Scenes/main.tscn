@@ -352,9 +352,13 @@ player_node = NodePath("Player")
 num_of_games_label = NodePath("UI/Number-of-Games-Label")
 lighting = NodePath("Lighting")
 debris_tilemap = NodePath("TileMapLayers/post_cutscene_debris")
+front_desbris_tilemap = NodePath("TileMapLayersFront/front_debris")
+main_monster = NodePath("Main_Monster")
+rps_monster = NodePath("RPS_Monster")
+tictactoe_monster = NodePath("tic_tac_toe_monster")
+textbox = NodePath("UI/TextBox")
 
 [node name="UI" parent="." instance=ExtResource("3_dex5k")]
-visible = false
 
 [node name="Fade_&_Video_Player" parent="UI" index="2"]
 z_index = 5
@@ -362,6 +366,9 @@ texture_filter = 2
 
 [node name="FadeRect" parent="UI/Fade_&_Video_Player" index="2"]
 mouse_filter = 2
+
+[node name="TextBox" parent="UI" index="3"]
+visible = false
 
 [node name="TicTacToe" parent="UI" instance=ExtResource("4_fdnlq")]
 visible = false
@@ -372,7 +379,7 @@ visible = false
 [node name="Lighting" parent="." instance=ExtResource("7_6iyac")]
 
 [node name="cutScene_Player" parent="." instance=ExtResource("2_hptm8")]
-position = Vector2(36, 158)
+position = Vector2(34, 152)
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
@@ -394,6 +401,12 @@ tile_set = SubResource("TileSet_21xkr")
 
 [node name="tic_tac_toe_monster" parent="." instance=ExtResource("11_d1ilt")]
 position = Vector2(141, -14)
+
+[node name="RPS_Monster" parent="." instance=ExtResource("12_6iyac")]
+position = Vector2(42, 280)
+
+[node name="Main_Monster" parent="." instance=ExtResource("14_jkdf5")]
+position = Vector2(34, 121)
 
 [node name="Player" parent="." instance=ExtResource("10_3q0qt")]
 
@@ -440,12 +453,6 @@ destination_door_tag = "upper_3"
 
 [node name="CollisionShape2D" parent="Doorways/lower_floor_3" index="0"]
 position = Vector2(119.18332, 3.6274557)
-
-[node name="RPS_Monster" parent="." instance=ExtResource("12_6iyac")]
-position = Vector2(42, 280)
-
-[node name="Main_Monster" parent="." instance=ExtResource("14_jkdf5")]
-position = Vector2(34, 121)
 
 [editable path="UI"]
 [editable path="UI/Number-of-Games-Label"]

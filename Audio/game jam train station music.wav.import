@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmupmomfmko4l"
+path="res://.godot/imported/game jam train station music.wav-aed20bb23b6ee186c89f52805eb728da.sample"
+
+[deps]
+
+source_file="res://Audio/game jam train station music.wav"
+dest_files=["res://.godot/imported/game jam train station music.wav-aed20bb23b6ee186c89f52805eb728da.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
