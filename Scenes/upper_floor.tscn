@@ -251,17 +251,34 @@ position = Vector2(47, -12)
 
 [node name="Doorways" type="Node" parent="."]
 
+[node name="upper_floor_2" parent="Doorways" groups=["doors"] instance=ExtResource("1_d3fgv")]
+position = Vector2(-17, 146)
+door_tag = "upper_2"
+destination_level_tag = "main"
+destination_door_tag = "lower_2"
+
+[node name="CollisionShape2D" parent="Doorways/upper_floor_2" index="0"]
+position = Vector2(-37, 0)
+
 [node name="upper_floor_1" parent="Doorways" groups=["doors"] instance=ExtResource("1_d3fgv")]
-position = Vector2(-2, 2)
+position = Vector2(-28, 8)
 door_tag = "upper_1"
 destination_level_tag = "main"
 destination_door_tag = "lower_1"
 
 [node name="CollisionShape2D" parent="Doorways/upper_floor_1" index="0" groups=["upper_1"]]
-position = Vector2(-51, 6)
+position = Vector2(-29, 6)
 
 [node name="Spawn" parent="Doorways/upper_floor_1" index="1" groups=["upper_1"]]
-position = Vector2(-17, 5)
+
+[node name="upper_floor_3" parent="Doorways" groups=["doors"] instance=ExtResource("1_d3fgv")]
+position = Vector2(-25, 294)
+door_tag = "upper_3"
+destination_level_tag = "main"
+destination_door_tag = "lower_3"
+
+[node name="CollisionShape2D" parent="Doorways/upper_floor_3" index="0"]
+position = Vector2(-29, 6)
 
 [node name="Player" parent="." instance=ExtResource("6_krh42")]
 
@@ -272,5 +289,7 @@ scale = Vector2(0.8, 0.8)
 [editable path="UI/Number-of-Games-Label"]
 [editable path="UI/PauseMenu"]
 [editable path="UI/PauseMenu/InputSettings"]
+[editable path="Doorways/upper_floor_2"]
 [editable path="Doorways/upper_floor_1"]
+[editable path="Doorways/upper_floor_3"]
 [editable path="Player"]

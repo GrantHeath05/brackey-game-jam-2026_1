@@ -390,7 +390,7 @@ tile_map_data = PackedByteArray("AAAaAAoAAgANAAoAAAAaAAsAAgANAAsAAAAbAAoAAgAOAAo
 tile_set = SubResource("TileSet_21xkr")
 
 [node name="tic_tac_toe_monster" parent="." instance=ExtResource("11_d1ilt")]
-position = Vector2(110, -14)
+position = Vector2(318, 118)
 
 [node name="Player" parent="." instance=ExtResource("10_3q0qt")]
 
@@ -416,10 +416,30 @@ destination_level_tag = "upper_floor"
 destination_door_tag = "upper_1"
 
 [node name="CollisionShape2D" parent="Doorways/lower_floor_1" index="0"]
-position = Vector2(138.00171, 0)
+position = Vector2(119.183136, 3.6274529)
+
+[node name="lower_floor_2" parent="Doorways" groups=["doors"] instance=ExtResource("13_6m82u")]
+position = Vector2(503.99997, 113)
+scale = Vector2(0.15941852, -0.5513508)
+door_tag = "lower_2"
+destination_level_tag = "upper_floor"
+destination_door_tag = "upper_2"
+
+[node name="CollisionShape2D" parent="Doorways/lower_floor_2" index="0"]
+position = Vector2(125.456116, 3.6274557)
+
+[node name="lower_floor_3" parent="Doorways" groups=["doors"] instance=ExtResource("13_6m82u")]
+position = Vector2(505.99997, 257)
+scale = Vector2(0.15941852, -0.5513508)
+door_tag = "lower_3"
+destination_level_tag = "upper_floor"
+destination_door_tag = "upper_3"
+
+[node name="CollisionShape2D" parent="Doorways/lower_floor_3" index="0"]
+position = Vector2(119.18332, 3.6274557)
 
 [node name="RPS_Monster" parent="." instance=ExtResource("12_6iyac")]
-position = Vector2(220, 13)
+position = Vector2(42, 280)
 
 [editable path="UI"]
 [editable path="UI/Number-of-Games-Label"]
@@ -430,3 +450,5 @@ position = Vector2(220, 13)
 [editable path="cutScene_Player"]
 [editable path="Player"]
 [editable path="Doorways/lower_floor_1"]
+[editable path="Doorways/lower_floor_2"]
+[editable path="Doorways/lower_floor_3"]

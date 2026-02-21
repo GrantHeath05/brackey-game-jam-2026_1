@@ -1,47 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbiafhg1xttjr"]
+[gd_scene load_steps=7 format=3 uid="uid://cbiafhg1xttjr"]
 
 [ext_resource type="Script" uid="uid://c44p7rb7t0y8r" path="res://Scripts/Mini_games/tic_tac_toe_monster.gd" id="1_fi5ie"]
 [ext_resource type="Texture2D" uid="uid://bx5fns4rex1dk" path="res://Sprites/monsters2.png" id="3_rbhdr"]
 [ext_resource type="Script" uid="uid://d3v0i74qc2ivy" path="res://Scenes/Interactable_Monster_Scene/Press_to_Interact_Label.gd" id="3_y58mu"]
 [ext_resource type="FontFile" uid="uid://bnu1mrbpgri7a" path="res://fonts/PlaywriteNZBasic-Regular.ttf" id="4_rbhdr"]
 [ext_resource type="PackedScene" uid="uid://xowece2cdlyu" path="res://Scenes/indicator.tscn" id="5_rbhdr"]
-
-[sub_resource type="Animation" id="Animation_b3eah"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-
-[sub_resource type="Animation" id="Animation_2grxn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ee3hg"]
-_data = {
-&"Idle": SubResource("Animation_b3eah"),
-&"RESET": SubResource("Animation_2grxn")
-}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y58mu"]
 radius = 29.017237
@@ -55,11 +18,6 @@ position = Vector2(2, 11)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, 2)
 texture = ExtResource("3_rbhdr")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ee3hg")
-}
 
 [node name="Area2D" type="Area2D" parent="."]
 

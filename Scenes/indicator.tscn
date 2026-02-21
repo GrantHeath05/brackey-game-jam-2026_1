@@ -11,6 +11,7 @@ texture_filter = 1
 texture = ExtResource("1_s5agk")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 texture_filter = 1
 color = Color(0, 0.64923394, 0.6492339, 1)
 energy = 0.3
