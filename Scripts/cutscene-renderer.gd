@@ -1,7 +1,7 @@
 extends VideoStreamPlayer
 
 func play_cutscene(filename: String) -> void:
-	var path := "cutscenes/%s.ogv" % filename
+	var path := "Cutscenes/%s.ogv" % filename
 	print_debug("Attempting to run " + path)
 
 	
