@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brvmxklahrka5"]
+[gd_scene load_steps=13 format=3 uid="uid://brvmxklahrka5"]
 
 [ext_resource type="PackedScene" uid="uid://istyookg2bxj" path="res://Scenes/pause_menu.tscn" id="1_nf4gj"]
 [ext_resource type="PackedScene" uid="uid://bs8684n2nusas" path="res://Scenes/number_of_games_label.tscn" id="1_q7pk6"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://bupgey7av1qbf" path="res://Scenes/number_of_games_label.gd" id="2_m78vo"]
 [ext_resource type="Script" uid="uid://ut870ecfnuyb" path="res://Scripts/cutscene-renderer.gd" id="2_nf4gj"]
 [ext_resource type="PackedScene" uid="uid://clailhmk32nu1" path="res://Scenes/text_box.tscn" id="7_smcll"]
+[ext_resource type="Script" uid="uid://bte1dykkjnqd3" path="res://Scenes/ending_panel.gd" id="8_ryf15"]
 
 [sub_resource type="Animation" id="Animation_6bp64"]
 length = 0.001
@@ -64,7 +65,6 @@ _data = {
 layer = 5
 
 [node name="Number-of-Games-Label" parent="." instance=ExtResource("1_q7pk6")]
-visible = false
 script = ExtResource("2_m78vo")
 
 [node name="Label" parent="Number-of-Games-Label" index="0"]
@@ -140,8 +140,29 @@ expand = true
 script = ExtResource("2_nf4gj")
 
 [node name="TextBox" parent="." instance=ExtResource("7_smcll")]
+visible = false
+
+[node name="EndingPanel" type="PanelContainer" parent="."]
+visible = false
+script = ExtResource("8_ryf15")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EndingPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndingPanel/VBoxContainer"]
+layout_mode = 2
+text = "    Congratiulations you escaped the strange subway system!    
+
+Thanks for playing our submission
+for the Brackeys Game Jam 2026.1"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="EndingPanel/VBoxContainer"]
+layout_mode = 2
+text = "Return to Main Menu"
 
 [connection signal="pressed" from="PauseMenu/PauseMenu/VBoxContainer/Controls_settings" to="PauseMenu" method="_on_controls_settings_pressed"]
+[connection signal="pressed" from="EndingPanel/VBoxContainer/Button" to="EndingPanel" method="_on_button_pressed"]
 
 [editable path="Number-of-Games-Label"]
 [editable path="PauseMenu"]

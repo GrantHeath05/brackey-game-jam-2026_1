@@ -227,13 +227,8 @@ textbox = NodePath("UI/TextBox")
 
 [node name="UI" parent="." instance=ExtResource("2_f7a0d")]
 
-[node name="Panel" parent="UI/TextBox" index="0"]
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -282.0
-offset_bottom = 0.0
-grow_vertical = 0
+[node name="Number-of-Games-Label" parent="UI" index="0"]
+visible = true
 
 [node name="Guess_The_Cup_Game" parent="UI" instance=ExtResource("3_fjsss")]
 visible = false

@@ -361,6 +361,9 @@ textbox = NodePath("UI/TextBox")
 
 [node name="UI" parent="." instance=ExtResource("3_dex5k")]
 
+[node name="Number-of-Games-Label" parent="UI" index="0"]
+visible = true
+
 [node name="Fade_&_Video_Player" parent="UI" index="2"]
 z_index = 5
 texture_filter = 2
@@ -368,8 +371,18 @@ texture_filter = 2
 [node name="FadeRect" parent="UI/Fade_&_Video_Player" index="2"]
 mouse_filter = 2
 
-[node name="TextBox" parent="UI" index="3"]
-visible = false
+[node name="EndingPanel" parent="UI" index="4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.5
+offset_top = -68.0
+offset_right = 240.5
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TicTacToe" parent="UI" instance=ExtResource("4_fdnlq")]
 visible = false
@@ -381,6 +394,9 @@ visible = false
 
 [node name="cutScene_Player" parent="." instance=ExtResource("2_hptm8")]
 position = Vector2(34, 152)
+
+[node name="Area2D" parent="cutScene_Player" index="2" node_paths=PackedStringArray("ending_panel")]
+ending_panel = NodePath("../../UI/EndingPanel")
 
 [node name="TileMapLayers" type="Node2D" parent="."]
 
