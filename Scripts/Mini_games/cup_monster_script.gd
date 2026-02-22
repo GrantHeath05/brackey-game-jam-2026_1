@@ -10,6 +10,8 @@ func _ready():
 	$Area2D.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body):
+	if not visible:
+		return
 	if body.is_in_group("Player"):
 		player_in_range = true
 		$Control.show_interact_prompt()   # small prompt above monster
@@ -26,7 +28,8 @@ func _on_body_exited(body):
 
 func _process(_delta):
 	$Indicator.visible = not GameManager.guess_cup_complete
-
+	if not visible:
+		return
 	if not player_in_range:
 		return
 

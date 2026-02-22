@@ -38,6 +38,7 @@ signal on_trigger_player_spawn
 var tictactoe_complete = false
 var guess_cup_complete = false
 var RPS_complete = false
+var amount_of_games_completed: int = 0
 var all_games_completed = false
 
 var rock_paper_scissors
@@ -89,11 +90,18 @@ func show_debris():
 		# debris.collision_layer = 1
 		# debris.collision_mask = 1
 
+func _ready():
+	if $MusicPlayer:
+		$MusicPlayer.finished.connect(_on_music_finished)
 
+func _on_music_finished():
+	if in_main_menu or after_intro:
+		$MusicPlayer.play()
 
 func _process(_delta):
 	# MAIN MENU MUSIC
 	if in_main_menu:
+		
 		if not music_started and $MusicPlayer:
 			music_started = true
 			$MusicPlayer.play()
@@ -101,6 +109,7 @@ func _process(_delta):
 
 	# IN-GAME MUSIC (only after intro)
 	if after_intro:
+		update_objective_tag("Beat Creatures at their own games")
 		if not music_started and $MusicPlayer:
 			music_started = true
 			$MusicPlayer.play()
@@ -112,6 +121,7 @@ func _process(_delta):
 		show_all_monster()
 
 	else:
+		update_objective_tag("Find your train")
 		hide_debris()
 		hide_all_monster()
 

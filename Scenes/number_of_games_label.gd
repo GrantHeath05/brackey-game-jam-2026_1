@@ -13,5 +13,6 @@ func update_game_tracker_label():
 		completed_count +=1
 
 	$Label.text = "%d/3" % completed_count
+	GameManager.amount_of_games_completed = completed_count
 	if completed_count >= 3:
 		GameManager.all_games_completed = true
